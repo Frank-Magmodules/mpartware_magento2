@@ -1,0 +1,34 @@
+.breadcrumbs {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .breadcrumbs {
+    display: block;
+    margin: 40px 0 10px!important;
+    padding: 0!important;
+
+    strong {
+      font-weight: bold!important;
+    }
+
+    li.item {
+      color: $gold;
+
+      a, a:visited, a:hover, a:focus {
+        color: $gold;
+      }
+    }
+    
+
+    li.item:last-child {
+      font-weight: bold;
+      color: $rubine;
+
+      & a {
+        font-weight: bold;
+        color: $rubine;
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+.cms-downloads{
+    h2{
+        font-size: 20px;
+        margin-top: 40px;
+    }
+    .download-paragraph{
+        margin-bottom: 70px;
+    }
+    .cat-select-box{
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1200px;
+        margin-top: 20px;
+        .cat-select{
+            list-style-type: none;
+            margin-left: -55px;
+            input[type=checkbox]:before {
+                position: absolute;
+                height: 14px;
+                width: 14px;
+                background-color: #fff;
+                content: "";
+                border: 1px solid $gold;
+            }
+            input[type=checkbox]:after {
+                content: "";
+                position: absolute;
+                display: none;
+                left: 5px;
+                top: 1px;
+                width: 5px;
+                height: 10px;
+                border: solid $gold;
+                border-width: 0 2px 2px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            input[type=checkbox]:checked:after {
+                display: block;
+            }
+            label {
+                font-weight: 700;
+                min-height: 20px;
+                padding-left: 20px;
+            }
+        }
+    }
+    .category-box,
+    .category-box-beginning{
+        .download-header{
+            h3{
+                margin-top: 70px;
+            }
+            .fancy{
+                padding-left: 25px;
+                &:after, &:before{
+                    color: #d40057;
+                    font-size: 2em;
+                    position: absolute;
+                    margin-top: -15px;
+                }
+                &:after{
+                    content: "«";
+                    padding-left: 10px;
+                }
+                &:before{
+                    content: "»";
+                    margin-left: -25px;
+                }
+            }
+        }
+        .download-box{
+            width: 100%;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0;
+            .download-box-single{
+                padding: 0 15px;
+                width: 25%;
+                margin-bottom: 40px;
+                min-width: 288px;
+                h4{
+                    font-size: 18px;
+                    min-height: 38px;
+                }
+            }
+            .temp-container {
+                max-width: 300px;
+                height: 300px;
+                margin: 0 auto 10px 0;
+                border: 1px solid $gold;
+                position: relative;
+            }
+            .download-icons{
+                max-width: 300px;
+                margin: 0 auto 0 0;
+                .format-size{
+                    color: $gold;
+                    font-size: 16px;
+                    font-size: 1.6rem;
+                    font-weight: 300;
+                    margin-top: 1em;
+                    display: inline-block;
+                }
+                .icons{
+                    float: right;
+                    display: inline;
+                    i{
+                        padding: 18px 10px 16px 16px;
+                        cursor: pointer;
+                        color: #d40057;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(min-width:768px){
+    .cms-downloads{
+        h2{
+            font-size: 20px;
+            margin-top: 40px;
+        }
+        .download-paragraph{
+            margin-bottom: 70px;
+        }
+            .cat-select-box{
+                width: 90%;
+                margin: 0 auto;
+                max-width: 1200px;
+                margin-top: 20px;
+                .cat-select{
+                    list-style-type: none;
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-left: unset;
+                }
+            }
+        .category-box,
+        .category-box-beginning{
+            .download-box{
+                display: flex;
+                flex-wrap: wrap;
+                width: 93%;
+            }
+        }
+    }
+}

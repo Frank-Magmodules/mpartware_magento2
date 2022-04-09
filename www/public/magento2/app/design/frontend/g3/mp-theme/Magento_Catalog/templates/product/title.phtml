@@ -1,0 +1,15 @@
+<?php
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+
+switch ($blockObj->getLang()) {
+  case 'de':
+    $description = 'Beschreibung';
+    break;
+
+  case 'en':
+    $description = 'Description';
+    break;
+}
+
+?>
+<h3><?= $description ?></h3>

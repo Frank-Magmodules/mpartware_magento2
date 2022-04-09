@@ -1,0 +1,60 @@
+<?php
+    $blockObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetPage');
+?>
+<?php if ($blockObj->currentPage() == 'home'): ?>
+<div class="homepage-slider">
+    <div class="swiper-container swiper-1 swiper-container-horizontal">
+        <div class="slider_img" data-src="<?php echo $this->getViewFileUrl('images/slider/Hintergrund_Slider_Headerbilder.jpg'); ?>" style="background-image: url('<?php echo $this->getViewFileUrl('images/slider/Hintergrund_Slider_Headerbilder.jpg'); ?>')"></div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img data-src="<?php echo $this->getViewFileUrl('images/slider/clay-modeling-film.png'); ?>" class="swiper-lazy slider_front_img clay" alt="" title="">
+                <div class="swiper-lazy-preloader"></div>
+                <div class="slider_txt">
+                    <p class="slider-header">Clay Modeling Film </p>
+                    <p><?php echo __('Clay Modeling Film wurde speziell auf Modellierton (Clay) entwickelt. Die hauchdünne (75my) flexible Folie lässt sich sehr einfach auf dreidimensional gekrümmten Oberflächen anbringen und haftet auf dem Clay ohne Kleber, rein durch Adhäsion.') ?></p>
+
+                    <p class="shop-link-left"><a href="/modeling-produkte/folien-0?cat=64"><?php echo __('mehr...') ?><svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="more-svg"><path fill="#d40057" d="M363.8 264.5L217 412.5c-4.7 4.7-12.3 4.7-17 0l-19.8-19.8c-4.7-4.7-4.7-12.3 0-17L298.7 256 180.2 136.3c-4.7-4.7-4.7-12.3 0-17L200 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17zm-160-17L57 99.5c-4.7-4.7-12.3-4.7-17 0l-19.8 19.8c-4.7 4.7-4.7 12.3 0 17L138.7 256 20.2 375.7c-4.7 4.7-4.7 12.3 0 17L40 412.5c4.7 4.7 12.3 4.7 17 0l146.8-148c4.7-4.7 4.7-12.3 0-17z" class="double-arrow-right"></path></svg></a></p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="<?php echo $this->getViewFileUrl('images/slider/header-tapes.png'); ?>" class="swiper-lazy slider_front_img tapes" alt="" title="">
+                <div class="swiper-lazy-preloader"></div>
+                <div class="slider_txt">
+                    <p class="slider-header"><?php echo __('Tapes für Designer,<br> Modelleure und Künstler') ?></p>
+                    <p><?php echo __('Selbstklebende Tapes für maßgenaue Designentwürfe und Packages. Unverzichtbar für Darstellungen im Modellbau.') ?></p>
+
+                    <p class="shop-link-left"><a href="/tapes"><?php echo __('mehr...') ?><svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="more-svg"><path fill="#d40057" d="M363.8 264.5L217 412.5c-4.7 4.7-12.3 4.7-17 0l-19.8-19.8c-4.7-4.7-4.7-12.3 0-17L298.7 256 180.2 136.3c-4.7-4.7-4.7-12.3 0-17L200 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17zm-160-17L57 99.5c-4.7-4.7-12.3-4.7-17 0l-19.8 19.8c-4.7 4.7-4.7 12.3 0 17L138.7 256 20.2 375.7c-4.7 4.7-4.7 12.3 0 17L40 412.5c4.7 4.7 12.3 4.7 17 0l146.8-148c4.7-4.7 4.7-12.3 0-17z" class="double-arrow-right"></path></svg></a></p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="<?php echo $this->getViewFileUrl('images/slider/marker-layoutblock.png'); ?>" class="swiper-lazy slider_front_img art-supplies" alt="" title="">
+                <div class="swiper-lazy-preloader"></div>
+                <div class="slider_txt">
+                    <p class="slider-header"><?php echo __('Professioneller Künstlerbedarf') ?></p>
+                    <p><?php echo __('Hochwertige Layout Marker, Künstlerpapiere und weitere unverzichtbare Werkzeuge kreativer Prozesse – MP artware bietet vielseitigen Spezialbedarf für Design und Grafik.') ?></p>
+                    <p class="shop-link-left"><a href="/wn-layout-markenblock.html"><?php echo __('mehr...') ?><svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="more-svg"><path fill="#d40057" d="M363.8 264.5L217 412.5c-4.7 4.7-12.3 4.7-17 0l-19.8-19.8c-4.7-4.7-4.7-12.3 0-17L298.7 256 180.2 136.3c-4.7-4.7-4.7-12.3 0-17L200 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17zm-160-17L57 99.5c-4.7-4.7-12.3-4.7-17 0l-19.8 19.8c-4.7 4.7-4.7 12.3 0 17L138.7 256 20.2 375.7c-4.7 4.7-4.7 12.3 0 17L40 412.5c4.7 4.7 12.3 4.7 17 0l146.8-148c4.7-4.7 4.7-12.3 0-17z" class="double-arrow-right"></path></svg></a></p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="<?php echo $this->getViewFileUrl('images/slider/MP_Header_Slider_News_02.png'); ?>" class="swiper-lazy slider_front_img news" alt="" title="">
+                <div class="swiper-lazy-preloader"></div>
+                <div class="slider_txt">
+                    <p class="slider-header">News</p>
+                    <p><?php echo __('Das Neueste aus der Welt von MP artware: Neue Papier- und Kartonsorten, neue Werkzeuge, neue Folien und vieles mehr, das bedeutet für unsere Kunden vor allem: Neue Impulse und neue Möglichkeiten! Jetzt reinschauen und immer auf dem Laufenden bleiben.') ?></p>
+                    <p class="shop-link-left"><a href="/wn-layout-markenblock.html"><?php echo __('mehr...') ?><svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="more-svg"><path fill="#d40057" d="M363.8 264.5L217 412.5c-4.7 4.7-12.3 4.7-17 0l-19.8-19.8c-4.7-4.7-4.7-12.3 0-17L298.7 256 180.2 136.3c-4.7-4.7-4.7-12.3 0-17L200 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17zm-160-17L57 99.5c-4.7-4.7-12.3-4.7-17 0l-19.8 19.8c-4.7 4.7-4.7 12.3 0 17L138.7 256 20.2 375.7c-4.7 4.7-4.7 12.3 0 17L40 412.5c4.7 4.7 12.3 4.7 17 0l146.8-148c4.7-4.7 4.7-12.3 0-17z" class="double-arrow-right"></path></svg></a></p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="<?php echo $this->getViewFileUrl('images/slider/MP_Header_Slider_Sale_02.png'); ?>" class="swiper-lazy slider_front_img sale" alt="" title="">
+                <div class="swiper-lazy-preloader"></div>
+                <div class="slider_txt">
+                    <p class="slider-header">Sale</p>
+                    <p><?php echo __('Auch Designer und Grafiker freuen sich, wenn sie was sparen können. Deshalb haben wir von MP artware immer wieder tolle Aktionen und Abverkaufsartikel für Sie am Start: Jetzt reinschauen und von richtigen Schnäppchen profitieren.') ?></p>
+                    <p class="shop-link-left"><a href="/wn-layout-markenblock.html"><?php echo __('mehr...') ?><svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="more-svg"><path fill="#d40057" d="M363.8 264.5L217 412.5c-4.7 4.7-12.3 4.7-17 0l-19.8-19.8c-4.7-4.7-4.7-12.3 0-17L298.7 256 180.2 136.3c-4.7-4.7-4.7-12.3 0-17L200 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17zm-160-17L57 99.5c-4.7-4.7-12.3-4.7-17 0l-19.8 19.8c-4.7 4.7-4.7 12.3 0 17L138.7 256 20.2 375.7c-4.7 4.7-4.7 12.3 0 17L40 412.5c4.7 4.7 12.3 4.7 17 0l146.8-148c4.7-4.7 4.7-12.3 0-17z" class="double-arrow-right"></path></svg></a></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<?php endif; ?>

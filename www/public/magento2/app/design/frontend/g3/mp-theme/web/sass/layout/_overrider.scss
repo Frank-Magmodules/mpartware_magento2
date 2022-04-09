@@ -1,0 +1,73 @@
+@media (max-width: 1024px) {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .page-header {
+        position: fixed;
+    }
+}
+
+html.noscroll {
+    overflow-y: hidden;
+}
+
+.page-header {
+    position: fixed;
+}
+
+.link-btn-rubine:focus,
+.link-btn-rubine:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+.slider_txt.text4 {
+    z-index: 1;
+
+    &:after {
+        box-shadow: -20px -20px 130px 13px #000;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        max-height: 29%;
+        background-color: rgb(0 0 0 / 60%);
+        border-radius: 15px;
+        z-index: -1;
+    }
+}
+
+.side-menu ul li a {
+    box-shadow: 0px 0px 90px 5px #fff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+#algolia-searchbox .algolia-search-input:focus {
+    border: none;
+    border-bottom: 1px solid #96694c;
+}
+
+.footer_algolia {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    #algolia-autocomplete-container .aa-dropdown-menu {
+        max-width: 45%;
+        min-width: 800px;
+    }
+}
+
+@media screen and (min-width: 1084px) {
+    .mp-theme .nav-sections {
+        top: 249px;
+    }
+}

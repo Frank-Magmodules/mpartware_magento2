@@ -1,0 +1,156 @@
+.copyright {
+    display: block;
+    color: $white;
+    border-top: 2px solid $white;
+    margin-top: 50px !important;
+    padding-top: 20px;
+}
+
+.footer.content {
+    border-top: none;
+
+    .field-recaptcha {
+        display: none;
+    }
+}
+
+.page-footer {
+    border-top: 6px solid $rubine;
+    background-color: $black;
+}
+
+.footer-link-container {
+    display: flex;
+    padding-bottom: 50px;
+    border-bottom: 2px solid $white;
+
+    .footer-links {
+        display: block;
+        padding: 0;
+        margin-left: -0.5em !important;
+
+        .nav.item {
+            position: relative;
+            padding: .5em;
+            display: inline-block;
+    
+            a {
+                color: $white;
+                text-decoration: underline;
+    
+                &:visited {
+                    color: $white;
+                    text-decoration: underline;
+                }
+
+                &:focus{
+                    box-shadow: 0 0 3px 1px #fff;
+                }
+            }
+        }
+    }
+}
+
+
+
+.footer-middle-container{
+    display: flex;
+    margin-top: 40px;
+
+    .footer-headline{
+        color: $white;
+        margin-bottom: 30px;
+    }
+    
+    .footer-contact{
+        color: $white;
+        margin-right: 4%;
+    }
+
+    .payment{
+        flex-basis: 50%;
+        margin-right: 4%;
+    }
+
+    .partner{
+        flex-basis: 30%;
+    }
+
+    .payment-logos, .partner-logos {
+        display: grid;
+        gap: 25px 20px;
+        grid-template-columns: repeat(auto-fill, 150px);
+
+        > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $white;
+            //aspect-ratio: 29/10;
+            height: 70px;
+
+            img{
+                max-width: 110px;
+            }
+        }
+    }
+
+    .partner-logos{
+        grid-template-columns: repeat(auto-fill, 170px);
+
+        > div{
+            background: transparent;
+
+            a:focus{
+                box-shadow: none;
+            }
+
+            img{
+                max-width: 150px;
+            }
+        }
+    }
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    & > div:not(:last-child) {
+        margin-right: 16px;
+    }
+}
+
+@media (max-width: 850px){
+    .footer-middle-container{
+        flex-direction: column;
+
+        .footer-headline{
+            margin-bottom: 20px;
+        }
+
+        > div:not(:last-child){
+            margin-bottom: 40px;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .payment-logos {
+        flex-direction:column;
+    }
+}
+
+@media (max-width: 370px){
+    .footer-middle-container{
+        .payment-logos, .partner-logos {
+            grid-template-columns: repeat(auto-fill, 130px);
+
+            img{
+                max-width: 130px;
+            }
+        }
+    }
+    
+}

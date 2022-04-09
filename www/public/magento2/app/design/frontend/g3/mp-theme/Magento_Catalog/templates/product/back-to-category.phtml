@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product additional attributes template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Attributes
+ */
+
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+
+switch ($blockObj->getLang()) {
+  case 'de':
+    $backToCategory = 'zurück zur Übersicht';
+    break;
+
+  case 'en':
+    $backToCategory = 'back to overview';
+    break;
+}
+?>
+<div class="back-to-category">
+  <a href="#"><i class="fas fa-angle-double-left"></i><?= $backToCategory ?></a>
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="G3_AlgoliasearchCustomizer::common.js" />
+        <css src="G3_AlgoliasearchCustomizer::main.css" />
+    </head>
+    <body>
+        <referenceBlock name="before.body.end">
+            <!-- Autocomplete -->
+            <!-- <block class="Magento\Framework\View\Element\Template" name="custom.autocomplete.template" template="G3_AlgoliasearchCustomizer::autocomplete/custom.phtml"/> -->
+            <!-- <referenceBlock name="algolia.autocomplete.page" template="G3_AlgoliasearchCustomizer::autocomplete/page.phtml" />
+            <referenceBlock name="algolia.autocomplete.menu" template="G3_AlgoliasearchCustomizer::autocomplete/menu.phtml"/> -->
+
+
+            <referenceBlock name="algolia.autocomplete.product" template="G3_AlgoliasearchCustomizer::autocomplete/product.phtml" />
+            <referenceBlock name="algolia.autocomplete.category" template="G3_AlgoliasearchCustomizer::autocomplete/category.phtml" />
+            <referenceBlock name="algolia.autocomplete.page" template="G3_AlgoliasearchCustomizer::autocomplete/page.phtml" />
+            <referenceBlock name="algolia.autocomplete.attribute" template="G3_AlgoliasearchCustomizer::autocomplete/attribute.phtml" />
+            <referenceBlock name="algolia.autocomplete.suggestion" template="G3_AlgoliasearchCustomizer::autocomplete/suggestion.phtml" />
+            <referenceBlock name="algolia.autocomplete.menu" template="G3_AlgoliasearchCustomizer::autocomplete/menu.phtml" />
+        </referenceBlock>
+    </body>
+</page>

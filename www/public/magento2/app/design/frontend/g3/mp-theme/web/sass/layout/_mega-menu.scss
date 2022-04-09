@@ -1,0 +1,267 @@
+$colors: #ffcc00 #ed7102 #e3051a #b51f29 #c70b6f #821f81 #59358b #154194 #007fb5 #009a9b #65b32e #52822e #006650 #18460e
+  #003765;
+@for $i from 1 through length($colors) {
+  .cat_no_#{$i} {
+    a {
+      background: linear-gradient(
+        to right,
+        nth($colors, $i) 10%,
+        nth($colors, $i) 30%,
+        nth($colors, $i) 49.7%,
+        white 50%
+      );
+      background-size: 200% 100%;
+      background-position: right bottom;
+      transition: all 0.8s ease-out;
+
+      .color-name {
+        z-index: 1;
+      }
+    }
+
+    &.active,
+    &.active a {
+      background-color: nth($colors, $i);
+      background: nth($colors, $i);
+      background-size: 200% 100%;
+    }
+
+    & .color-link:before {
+      background-color: nth($colors, $i);
+    }
+
+    &:hover,
+    &:hover a {
+      background-color: nth($colors, $i);
+      background-position: left bottom;
+      text-decoration: none;
+
+      &::before {
+        height: 40px !important;
+        width: 100% !important;
+        transition: all 0.8s ease-out;
+        background-color: nth($colors, $i);
+      }
+    }
+
+    .left-span &,
+    .cms-home .ourproducts &,
+    .category-top-parent:before {
+      background-color: nth($colors, $i);
+    }
+  }
+
+  .desktop li.level0.nav-#{$i}:hover:after {
+    transition: 1s;
+    transform-origin: left;
+    transform: scale(1);
+    border-color: nth($colors, $i);
+  }
+  .category-top-parent[data-value="#{$i}"]:before {
+    background-color: nth($colors, $i);
+  }
+}
+
+.desktop .navigation li.level0:after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid transparent;
+  width: calc(100% - 24px);
+  left: 12px;
+  height: auto;
+  top: calc(2em - 2px);
+  transition: 1s;
+  transform-origin: left;
+  transform: scale(0);
+}
+
+span[class^="cat_no_"] {
+  color: $white !important;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 2;
+  transition: 1s;
+}
+
+.navigation .level0.active > .level-top,
+.navigation .level0.active > a:not(.ui-state-active),
+.navigation .level0.has-active > a:not(.ui-state-active) {
+  border: 0;
+}
+
+.navigation .level0.active > a:not(.ui-state-active) span:not(.ui-menu-icon),
+.navigation .level0.has-active > a:not(.ui-state-active) span:not(.ui-menu-icon) {
+  margin-left: 0;
+}
+
+.submenu {
+  width: 100%;
+}
+
+.moved, body:not(.cms-home) {
+  .top-contact.panel.header {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .sections.nav-sections {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    transition: transform 1s, top 0.5s;
+    background: 0 0;
+    transform: translateX(-100%);
+    background: $black;
+    [class^="cat_no"] {
+      //ul li a span {
+      color: $gold;
+    }
+
+    &:after {
+      background: #000;
+      content: "";
+      position: absolute;
+      bottom: -25%;
+      height: 25%;
+      left: 0;
+      right: 0;
+    }
+  }
+  .page-header.moved + .sections.nav-sections, body:not(.cms-home) + .sections.nav-sections {
+    top: 141px;
+  }
+  .nav-open .nav-sections {
+    transform: translateX(0);
+  }
+  .navigation {
+    background: none;
+  }
+  .navigation .level0.active > .level-top,
+  .navigation .level0.has-active > .level-top {
+    border: 0;
+  }
+  .level-top .left-span,
+  .level-top .right-span {
+    width: auto;
+  }
+  .navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .navigation .level0 {
+    //display: block;
+    width: calc(100% / 3);
+    margin: 8px 0 0;
+
+    &:nth-child(-n+3) {
+      margin: 0;
+    }
+
+    &:hover {
+      .submenu {
+        opacity: 1;
+        transition: 0.8s;
+      }
+    }
+    .submenu {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      min-width: auto;
+      padding: 0;
+      left: auto;
+      position: relative;
+      top: 0 !important;
+      background: none;
+      //overflow: hidden;
+      display: block !important;
+      opacity: 0;
+      min-height: 2em;
+      transition: 0.5s;
+      a:hover,
+      a.ui-state-focus {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+      }
+      a {
+        padding: 0 6px;
+        display: inline-block;
+        &:hover {
+          span {
+            color: $gold;
+            transition: 0.5s;
+          }
+        }
+        span {
+          color: $white;
+          font-size: 14px;
+          transition: 0.5s;
+        }
+      }
+      li.level1 {
+        display: inline-block;
+        float: left;
+        position: relative;
+        &:not(:last-child):after {
+          content: "/";
+          color: #fff;
+          position: relative;
+          display: inline;
+        }
+      }
+    }
+  }
+  .navigation {
+    li.line-break.ui-menu-divider {
+      margin: 0;
+      padding: 0;
+      height: 0;
+    }
+  }
+  .mp-theme .moved .header.content, body:not(.cms-home) .header.content {
+    transition: 0.5s;
+    padding: 10px 20px 0;
+    min-height: 80px;
+    //margin-top: -34px;
+  }
+  .moved, body:not(.cms-home) {
+    span.action.nav-toggle {
+      transition: 0.5s;
+      top: -6px;
+    }
+    .logo {
+      transition: 0.5s;
+      width: 60px;
+      top: 6px;
+    }
+    .shop-link {
+      transition: 0.5s;
+      position: absolute;
+      right: 20px;
+      bottom: 25px;
+    }
+    .top-contact.panel.header {
+      .tel,
+      .catalog {
+        display: none;
+      }
+    }
+  }
+  .nav-sections-item-content > .navigation {
+    padding-bottom: 2em;
+  }
+  .navigation .level0 .submenu .active > a {
+    border: none;
+  }
+
+  .navigation .level0 .submenu {
+    padding-left: 6px;
+  }
+}

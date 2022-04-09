@@ -1,0 +1,95 @@
+.account-nav .item.current a,
+.account-nav .item.current strong {
+    border-color: $rubine; 
+}
+
+#account-nav li.nav.item a,
+.block-dashboard-info a,
+.block-dashboard-addresses a,
+.block-dashboard-orders a,
+.orders-history a,
+.account a.action.back,
+.box-address-shipping a {
+    color: $rubine;
+}
+
+#account-nav .block.block-wishlist {
+    display: none;
+}
+
+//.wishlist-index-index {
+//  .actions-toolbar .secondary {
+//    display: none;
+//  }
+//}
+.account {
+    .sidebar.sidebar-additional {
+        display: none;
+    }
+    .actions-toolbar .secondary {
+        display: none;
+    }
+
+    .column.main{
+        border-left: 1px solid $gold;
+        padding-bottom: 0;
+        margin-bottom: 40px;
+        padding-left: 5px;
+
+        .block .block-title strong{
+            font-weight: bold !important;
+            text-decoration: underline;
+        }
+    }
+}
+
+.account.mobile{
+    .block-collapsible-nav{
+        .nav.item{
+            border-top:1px solid #000;
+            padding: 10px 0;
+            a{
+                color: $gold;
+                font-size: 24px;
+                font-weight: 100;
+            }
+
+            &:first-of-type.current{
+                display: none;
+            }
+        }
+        .nav.item.current{
+            strong{
+                color: $rubine;
+                font-size: 24px;
+                font-weight: 100;
+            }
+        }
+        .nav.item:nth-child(4),
+        .nav.item:nth-child(8){
+            border-top:unset;
+            display: none;
+        }
+        .nav.item:before{
+            content: "\f35a";
+            position: absolute;
+            right: 25px;
+            color: #d40057;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 500;
+            font-size: 25px;
+        }
+    }
+    .block-dashboard-info, 
+    .block-dashboard-addresses,
+    .block-collapsible-nav-title{
+        display: none;
+    }
+}
+
+
+.customer-account-edit .form-edit-account{
+    .fieldset.info label{
+        text-align: left;
+    }
+}

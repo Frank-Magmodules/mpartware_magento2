@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+switch ($blockObj->getLang()) {
+
+    case 'de':
+        $title = 'Wechseln Sie zur B2B Übersicht';
+        $title2 = 'Zum Seitenanfang';
+        $link = '/b2b';
+        break;
+
+    case 'en':
+        $title = 'Switch to the B2B shop';
+        $title2 = 'To the top';
+        $link = '/en/b2b';
+        break;
+
+    default:
+        $title = 'Wechseln Sie zur B2B Übersicht';
+        $title2 = 'Zum Seitenanfang';
+        $link = '/b2b';
+        break;
+}
+?>
+<ul>
+    <li><a href="#top" title="<?php echo $title2; ?>"><i class="fas fa-angle-up"></i></a></li>
+</ul>

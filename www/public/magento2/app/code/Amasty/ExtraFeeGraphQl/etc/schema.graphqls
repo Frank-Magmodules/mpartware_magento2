@@ -1,0 +1,64 @@
+type Query {
+    getListFeeItems: GetListFeeItemsOutput
+    @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\FeeItems")
+    getFeeItemsForQuote(cart_id: String!): [QuoteFeeItem]
+    @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\QuoteFeeItems")
+    getFeeOptions(fee_id: Int!, store_id: Int! @doc(description: "Enter store id for identify label of fee option.")): GetFeeOptionsOutput
+    @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\FeeOptions")
+    getAppliedFeeOptions(cart_id: String!): GetAppliedFeeOptionsOutput
+    @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\AppliedFeeOptions")
+}
+
+type GetListFeeItemsOutput {
+    total_records: Int @doc(description: "Total records of the fees."),
+    items: [FeeItem] @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\FeeItemsList")
+}
+
+type FeeItem {
+    entity_id: String @doc(description: "Identifier of the fee."),
+    name: String @doc(description: "Name of the fee."),
+    enabled: Boolean @doc(description: "Fee status."),
+    frontend_type: String @doc(description: "Type of the fee."),
+    description: String @doc(description: "Description of the fee.")
+}
+
+type QuoteFeeItem {
+    entity_id: String @doc(description: "Identifier of the fee."),
+    name: String @doc(description: "Name of the fee."),
+    frontend_type: String @doc(description: "Type of the fee."),
+    description: String @doc(description: "Description of the fee.")
+}
+
+type GetFeeOptionsOutput {
+    total_records: Int @doc(description: "Total records of the fee options."),
+    items: [OptionItem] @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\FeeOptionsList")
+}
+
+type OptionItem {
+    entity_id: String @doc(description: "Identifier of the fee."),
+    price: String @doc(description: "Price of the fee option."),
+    price_type: String @doc(description: "Price type of the fee option."),
+    default: Boolean @doc(description: "Is default of the fee option."),
+    label: String @doc(description: "Is label of the fee option.")
+}
+
+type GetAppliedFeeOptionsOutput {
+    total_records: Int @doc(description: "Total records of the applied fees."),
+    items: [AppliedFeeOptions] @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\AppliedFeeOptionsList")
+}
+
+type AppliedFeeOptions {
+    fee_id: Int @doc(description: "Is fee identifier information"),
+    option_id: Int @doc(description: "Is option identifier information"),
+    fee_amount: String @doc(description: "Is fee amount information"),
+    base_fee_amount: String @doc(description: "Is base fee amount information"),
+    tax_amount: String @doc(description: "Is tax amount information"),
+    base_tax_amount: String @doc(description: "Is base tax amount information"),
+    label: String @doc(description: "Is label information")
+}
+
+type Mutation {
+    applyExtraFees(cart_id: String!, fee_id: Int!, options_ids: String! @doc(description: "Enter comma separated list of options ids you want to apply.")): String
+    @resolver(class: "Amasty\\ExtraFeeGraphQl\\Model\\Resolver\\ApplyExtraFees")
+    @doc(description: "Apply or cancel (set options ids to 0) extra fees to current cart.")
+}

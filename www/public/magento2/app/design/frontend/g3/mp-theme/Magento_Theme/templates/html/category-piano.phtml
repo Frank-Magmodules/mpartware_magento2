@@ -1,0 +1,99 @@
+<?php
+$categoryBlock = $block->getLayout()->createBlock('G3\g3core\Block\Html\Categorylist');
+
+$categories = $categoryBlock->getCategoryCollection(true,2,false,false);
+
+$currentCategory = $categoryBlock->getCurrentCategory();
+$category = $categoryBlock->getCategory($currentCategory->getId());
+$parentCategories = $category->getParentCategories();
+$topParentName = reset($parentCategories);
+$topParentID = key($parentCategories);
+
+$subCategories = $categoryBlock->getAllChildren($topParentID);
+
+// Load category by category ID
+
+
+$childrenCategories = $category->getChildrenCategories(); // Of current Category
+$parentId = $category->getParentId($currentCategory->getId());
+
+$parentCategory = $categoryBlock->getParentCategory($currentCategory->getId());
+//$childrenArray = [];
+foreach($parentCategories as $parent) {
+    echo('<div id="parentName" style="display: none;">'.$parent->getName().'</div>');
+    break;
+}
+?>
+
+<div class="category-piano">
+    <div class="list-container">
+    <?php
+        $counter = 0;
+        $last_key = count($categories);
+        foreach ($categories as $category) {
+            if ($category->getId() != '2' && $counter <= 15) {
+                if ($counter == 1 || $counter == 4 || $counter == 7 || $counter == 10 || $counter == 13) {
+                    echo('<div class="column-container">');
+                }
+                echo '<div class="color-item cat_no_' . $counter . '" data-num="' . $counter . '"><a class="color-link" href="' . $category->getUrl() . '"><span class="color-name">' . $category->getName() . '</span></a></div>';
+                if ($counter == 3 || $counter == 6 || $counter == 9 || $counter == 12 || $counter == 15) {
+                    echo('</div>');
+                }
+                if ($counter != 15 && $counter == ($last_key-1)) {
+                    echo('</div>');
+                }
+            }
+            $counter++;
+        }
+    ?>
+    </div>
+    <script>
+        require([
+            'jquery',
+        ], function ($) {
+            $(function () {
+                var classes = $('body').attr('class').split(' ');
+                $('.color-item a').each(function(index){
+                    var currentCategory = $(this).text().toLowerCase().replace('.','').replace(' ','-').replace('ä', 'a').replace('ö','o').replace('ü','u');
+                    var me = $(this);
+                    for (var i = 0; i < classes.length;i++) {
+                        if (classes[i].indexOf('categorypath-'+currentCategory) !== -1)   {
+                            me.parent().addClass('active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</div>
+<div class="sub-categories">
+    <?php
+    
+    if ($parentId == 2) {
+        foreach($childrenCategories as $children) {
+            if ($currentCategory->getName() === $children->getName()) {
+                echo '<a style="color:green;" class="sub-category-link active" href="' . $children->getUrl() . '">' . $children->getName() . '</a>';
+            } else {
+                echo '<a class="sub-category-link" href="' . $children->getUrl() . '">' . $children->getName() . '</a>';
+            }
+        }
+    } else {
+        //$i = 0;
+        //$len = count($subCategories);
+        
+
+        foreach($subCategories as $subCategory) {
+            //var_dump($subCategory->getName());
+            //var_dump($currentCategory->getName());
+            //var_dump($childrenArray);
+            //var_dump($parentCategory->getName());
+            if ($currentCategory->getName() === $subCategory->getName() || $subCategory->getName() === $parentCategory->getName()) {
+                echo '<a class="sub-category-link active" href="' . $subCategory->getUrl() . '">' . $subCategory->getName() . '</a>';
+            } else {
+                echo '<a class="sub-category-link" href="' . $subCategory->getUrl() . '">' . $subCategory->getName() . '</a>';
+            }
+            //$i++;
+        }
+    }
+    ?>
+</div>

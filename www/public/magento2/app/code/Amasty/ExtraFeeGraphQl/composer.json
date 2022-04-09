@@ -1,0 +1,23 @@
+{
+  "name": "amasty/extra-fee-graph-ql",
+  "description": "Extra Fee GraphQl by Amasty",
+  "require": {
+    "php": "^7.1.0",
+    "magento/module-customer-graph-ql": ">=100.3.1",
+    "amasty/base": ">=1.1.0",
+    "amasty/module-extra-fee": ">=1.4.21"
+  },
+  "type": "magento2-module",
+  "version": "1.0.1",
+  "license": [
+    "Commercial"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Amasty\\ExtraFeeGraphQl\\": ""
+    }
+  }
+}

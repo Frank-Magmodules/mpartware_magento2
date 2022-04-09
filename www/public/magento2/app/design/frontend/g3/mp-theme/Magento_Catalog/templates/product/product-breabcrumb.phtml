@@ -1,0 +1,78 @@
+<?php
+$categoryBlock = $block->getLayout()->createBlock('G3\g3core\Block\Html\Categorylist');
+//$currentProductCategory = $categoryBlock->getCurrentCategory();
+
+//$categories = $categoryBlock->getCategoryCollection(true,4,false,false);
+$currentCategory = $categoryBlock->getCurrentCategory();
+
+//$newcategories = $categoryBlock->getCategoryCollection(true,4,'position',false);
+//$childrenCategories = $category->getChildrenCategories(); // Of current Category
+//$parentId = $category->getParentId($currentCategory->getId());
+
+// Load category by category ID
+$category = $categoryBlock->getCategory($currentCategory->getId());
+
+
+$parentCategory = $category->getParentCategories();
+$topParentName = reset($parentCategory);
+$topParentID = key($parentCategory);
+
+$subCategories = $categoryBlock->getAllChildren($topParentID);
+
+$product = $categoryBlock->getCurrentProduct();
+$currentCategoryId = $product->getcategoryIds();
+$currentCategoryId = reset($currentCategoryId);
+
+
+$temp = $categoryBlock->getParentId($currentCategoryId);
+$parentCategories = [];
+$parentCategories[] = $currentCategoryId;
+
+
+/// Create Breadcrumb for Products
+categoryList($temp, $parentCategories, $categoryBlock);
+function categoryList($temp, $parentCategories, $categoryBlock) {
+    if ($temp === '2') {
+        foreach($parentCategories as $value) {
+            //echo($categoryBlock->getCategory($value)->getName());
+        }
+        return $parentCategories;
+    } else {
+        $parentCategories[] = $temp;
+        $temp = $categoryBlock->getParentId($temp);
+        categoryList($temp, $parentCategories, $categoryBlock);
+    }
+}
+
+
+
+
+//$blub = $categoryBlock->getParentId($currentCategoryId);
+//echo($blub);
+//$blub = $categoryBlock->getParentId($blub);
+//echo($blub);
+//$blub = $categoryBlock->getParentId($blub);
+//echo($blub);
+?>
+<div class="sidebar-categories">
+    <div class="category-top-parent"><?php echo ($topParentName->getName()); ?></div>
+    <ul>
+        <?php                     
+            foreach($subCategories as $sub) {
+                echo ('<li class="parent-category">'.$sub->getName().'</li>');
+                if ($sub->getChildrenCategories()->count()){
+                    echo('<ul>');
+                    foreach($sub->getChildrenCategories() as $child) {
+                        if ($currentCategoryId === $child->getId()) {
+                            echo ('<li style="color:red;" class="child-category active">'.$child->getName().'</li>');
+                        } else {
+                            echo ('<li class="child-category">'.$child->getName().'</li>');
+                        }
+                    }
+                    echo('</ul>');
+                }
+            }
+        ?>
+    
+    </ul>
+</div>

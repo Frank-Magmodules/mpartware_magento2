@@ -1,0 +1,107 @@
+@mixin prefixer($name, $argument) {
+    -webkit-#{$name}: $argument;
+    -moz-#{$name}: $argument;
+    -ms-#{$name}: $argument;
+    -o-#{$name}: $argument;
+    #{$name}: $argument;
+}
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+//p {
+//  @include font-size(14px)
+//}
+
+$breakpoints: (
+    "phone":        320px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+    "tablet-wide":  1024px,
+    "desktop":      1248px,
+    "desktop-wide": 1440px
+);
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+// @include mq('tablet-wide')
+
+// Define vertical, horizontal, or both position
+@mixin center($position) {
+	position: absolute;
+  @if $position == 'vertical' {
+    top: 50%;
+		@include prefixer(transform,translateY(-50%));
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+		@include prefixer(transform,translateX(-50%));
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+		@include prefixer(transform,translate(-50%, -50%));
+  }
+}
+
+//.foo {
+//  @include center(both);
+//}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+.scrollbar-measure {
+	width: 100px;
+	height: 100px;
+	overflow: scroll;
+	position: absolute;
+	top: -9999px;
+}
+
+//@include keyframes(fade-out) {
+//  0% { opacity: 1; }
+//  90% { opacity: 0; }
+//}
+// Add animation to element
+//.element {
+//  width: 100px;
+//  height: 100px;
+//  background: black;
+//  @include animation('fade-out 5s 3');
+//}

@@ -1,0 +1,138 @@
+<?php
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+switch ($blockObj->getLang()) {
+
+    case 'de':
+        $imprint = 'Impressum';
+        $imprint_link = '/de/impressum';
+        $agb = 'AGB';
+        $agb_link = '/de/agb';
+        $privacy = 'Datenschutz';
+        $privacy_link = '/de/datenschutz';
+        $download = 'Downloads';
+        $download_link = '/de/downloads';
+        $service = 'Service';
+        $service_link = '/de/service';
+        $contact = 'Kontakt';
+        $contact_link = '/de/contact';
+        $payment = 'Versand und Bezahlung';
+        $payment_link = '/de/versand-und-bezahlung';
+        $withdrawal = 'Widerrufsrecht';
+        $withdrawal_link = '/de/widerrufsrecht';
+        $catalog = 'Katalog bestellen';
+        $catalog_link = '/de/katalog-bestellen';
+        $b2b = 'B2B und B2C';
+        $b2b_link = '/de/b2b-und-b2c';
+        $payment_alt = 'Unsere Bezahlmethoden';
+        $tools_link = 'https://www.toolsintl.jp/';
+        $chavant_link = 'https://www.chavant.com/';
+        $kaupo_link = 'https://www.kaupo.de/';
+
+        $tools_alt = 'Besuchen Sie unseren Partner Tools INT´l';
+        $chavant_alt = 'Besuchen Sie unseren Partner Chavant';
+        $kaupo_alt = 'Besuchen Sie unseren Partner KAUPO';
+        $footer_contact = 'Marlene Plankenhorn<br>Spezialbedarf für Design und Grafik<br><br>
+            Max-Planck-Straße 9<br>
+            D-78549 Spaichingen<br>
+            Deutschland';
+        $contact_headline = 'MP artware';
+        $payment_headline = 'Bezahlungsmöglichkeiten:';
+        $partner_headline = 'Partner:';
+
+        break;
+
+    case 'en':
+        $imprint = 'Imprint';
+        $imprint_link = '/en/imprint';
+        $agb = 'General terms';
+        $agb_link = '/en/general-terms';
+        $privacy = 'Privacy policy';
+        $privacy_link = '/en/privacy-policy';
+        $download = 'Downloads';
+        $download_link = '/en/downloads';
+        $service = 'Service';
+        $service_link = '/en/service';
+        $contact = 'Contact';
+        $contact_link = '/en/contact';
+        $payment = 'Shipping and payment';
+        $payment_link = '/en/shipping-and-payment';
+        $withdrawal = 'Right of withdrawal';
+        $withdrawal_link = '/en/right-of-withdrawal';
+        $catalog = 'Order catalog';
+        $catalog_link = '/en/order-catalog';
+        $b2b = 'B2B and B2C';
+        $b2b_link = '/en/b2b-and-b2c';
+        $payment_alt = 'Our payment methods';
+        $tools_link = 'https://www.toolsintl.jp/';
+        $chavant_link = 'https://www.chavant.com/';
+        $kaupo_link = 'https://www.kaupo.de/';
+
+        $tools_alt = 'Visit our partner Tools INT´l';
+        $chavant_alt = 'Visit our partner Chavant';
+        $kaupo_alt = 'Visit our partner KAUPO';
+        $footer_contact = 'Marlene Plankenhorn<br>Special needs for design and graphics<br><br>
+            Max-Planck-Straße 9<br>
+            D-78549 Spaichingen<br>
+            Germany';
+        $contact_headline = 'MP artware';
+        $payment_headline = 'Payment options:';
+        $partner_headline = 'Partner:'; 
+        break;
+}
+?>
+<div class="footer-link-container">
+    <ul class="footer-links">
+        <li class="nav item">
+            <a href="<?php echo $imprint_link; ?>"><?php echo $imprint; ?></a>
+        </li>
+        <li class="nav item">
+            <a href="<?php echo $agb_link; ?>"><?php echo $agb; ?></a>
+        </li>
+        <li class="nav item">
+            <a href="<?php echo $privacy_link; ?>"><?php echo $privacy; ?></a>
+        </li>
+        <li class="nav item">
+            <a href="<?php echo $withdrawal_link; ?>"><?php echo $withdrawal; ?></a>
+        </li>
+        <li class="nav item">
+            <a href="<?php echo $contact_link; ?>"><?php echo $contact; ?></a>
+        </li>
+        <li class="nav item">
+            <a href="<?php echo $payment_link; ?>"><?php echo $payment; ?></a>
+        </li>
+        <li class="nav item">
+            <a href="<?php echo $catalog_link; ?>"><?php echo $catalog; ?></a>
+        </li>
+        <li class="nav item">
+            <a href="<?php echo $download_link; ?>"><?php echo $download; ?></a>
+        </li>
+    </ul>
+</div>
+<div class="footer-middle-container">
+    <div class="footer-contact">
+        <div class="footer-headline"><?php echo $contact_headline; ?></div>
+        <p><?php echo $footer_contact; ?></p>
+    </div>
+    <div class="payment">
+        <div class="footer-headline"><?php echo $payment_headline; ?></div>
+        <a href="<?php echo $payment_link; ?>" title="<?php echo $payment_alt; ?>" target="_blank">
+            <div class="payment-logos">
+                <div><img src="<?php echo $this->getViewFileUrl('images/american-express.svg'); ?>" alt="<?php echo $payment_alt; ?>"/></div>
+                <div><img src="<?php echo $this->getViewFileUrl('images/master-card.svg'); ?>" alt="<?php echo $payment_alt; ?>"/></div>
+                <div><img src="<?php echo $this->getViewFileUrl('images/paypal.svg'); ?>" alt="<?php echo $payment_alt; ?>"/></div>
+                <div><img src="<?php echo $this->getViewFileUrl('images/visa.svg'); ?>" alt="<?php echo $payment_alt; ?>"/></div>
+                <div><img src="<?php echo $this->getViewFileUrl('images/nachnahme.svg'); ?>" alt="<?php echo $payment_alt; ?>"/></div>
+                <div><img src="<?php echo $this->getViewFileUrl('images/vorauskasse.svg'); ?>" alt="<?php echo $payment_alt; ?>"/></div>
+                <div><img src="<?php echo $this->getViewFileUrl('images/rechnung.svg'); ?>" alt="<?php echo $payment_alt; ?>"/></div>
+            </div>
+        </a>
+    </div>
+    <div class="partner">
+        <div class="footer-headline"><?php echo $partner_headline; ?></div>
+        <div class="partner-logos">
+            <div class="tools-logo"><a href="<?php echo $tools_link; ?>" title="<?php echo $tools_alt; ?>" target="_blank"><img src="<?php echo $this->getViewFileUrl('images/logo-tools-negativ.png'); ?>" alt="<?php echo $tools_alt; ?>"/></a></div>
+            <div class="chavant-logo"><a href="<?php echo $chavant_link; ?>" title="<?php echo $chavant_alt; ?>" target="_blank"><img src="<?php echo $this->getViewFileUrl('images/logo-chavant-negativ.png'); ?>" alt="<?php echo $chavant_alt; ?>"/></a></div>
+            <div class="kaupo-logo"><a href="<?php echo $kaupo_link; ?>" title="<?php echo $kaupo_alt; ?>" target="_blank"><img src="<?php echo $this->getViewFileUrl('images/logo-kaupo-negativ.png'); ?>" alt="<?php echo $kaupo_alt; ?>"/></a></div>
+        </div>
+    </div>
+</div>

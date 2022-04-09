@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+//define('__ROOT__', dirname(dirname(__FILE__)));
+//require_once(__ROOT__.'/../Magento_Checkout/templates/cart/minicart.phtml');
+
+// @codingStandardsIgnoreFile
+/** @var $block \Magento\Customer\Block\Account\AuthorizationLink */
+//$authBlock = $block->getLayout()->createBlock('Magento\Customer\Block\Account\AuthorizationLink');
+//$dataPostParam = '';
+//if ($authBlock->isLoggedIn()) {
+//    $dataPostParam = sprintf(" data-post='%s'", $authBlock->getPostParams());
+//}
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+//$cartBlock = $block->getLayout()->createBlock('Magento\Checkout\Block\Cart\Sidebar');
+
+/** @var $block \Magento\Wishlist\Block\Link */
+//$wishBlock = $block->getLayout()->createBlock('Magento\Wishlist\Block\Link');
+?>
+<li class="my-account-link">
+  <a href="/customer/account/" title="<?php /* @escapeNotVerified */ echo __('Login and explore our store'); ?>"><i class="far fa-user"></i><span class="text"> <?php /* @escapeNotVerified */ echo __('My Account'); ?></span></a>
+</li>

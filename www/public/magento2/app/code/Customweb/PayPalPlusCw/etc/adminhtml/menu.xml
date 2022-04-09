@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Customweb_PayPalPlusCw::transactions" title="PayPal Plus Transactions" module="Customweb_PayPalPlusCw" sortOrder="10" parent="Customweb_Base::sales_customweb" action="paypalpluscw/transaction" resource="Customweb_PayPalPlusCw::transaction" />
+
+        <add id="Customweb_PayPalPlusCw::config" title="PayPal Plus" module="Customweb_PayPalPlusCw" sortOrder="100" parent="Customweb_Base::config" action="paypalpluscw/config" resource="Customweb_PayPalPlusCw::config"/>
+    </menu>
+</config>

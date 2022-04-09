@@ -1,0 +1,326 @@
+.filter-options-content .items {
+  a {
+    color: $gold;
+  }
+
+  .category-top-parent a {
+    color: $black;
+    font-weight: bold;
+    font-family: Prata, serif;
+  }
+
+  input[type="checkbox"] {
+    outline: 1px solid $rubine;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+  }
+
+  a.am_shopby_link_selected ~ ul.items.items-children.-folding{
+    display: block !important;
+  }
+}
+
+.block.filter .filter-title {
+  display: none;
+}
+
+.filter-options {
+  display: none;
+}
+
+.sidebar dt.filter-options-title {
+  display: none;
+}
+
+.filter-options {
+  ul.items.items-children.level-1.-folding {
+    display: block !important;
+  }
+
+  .items-children a {
+    padding-left: 20px;
+    display: block;
+  }
+
+  .am-filter-items-attr_category_ids > li > span {
+    display: none !important;
+  }
+
+  input[type="radio"] {
+    outline: 1px solid $rubine;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+  }
+
+  .am-labels-folding .am-collapse-icon {
+    left: -30px;
+  }
+
+  .am-collapse-icon:after {
+    content: "\f103";
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    color: $gold;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    border: none;
+    transform: none;
+    top: 6px;
+  }
+
+  .am-collapse-icon._active:after {
+    content: "\f102";
+    transform: none;
+    border: none;
+  }
+
+  a.am_shopby_link_selected:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+  }
+
+  a.am_shopby_link_selected + ul a:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+  }
+}
+
+.amasty-catalog-topnav.catalog-topnav .filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  border: 0;
+  margin-right: -20px;
+
+  .filter-options-title {
+    color: $gold;
+  }
+
+  .filter-options-content {
+    position: relative;
+    border: none;
+  }
+
+  &#narrow-by-list > div {
+    width: calc(100% / 5);
+  }
+
+  .am-dropdown .am-select,
+  .am-dropdown .chosen-container .chosen-choices {
+    border: none;
+  }
+
+  .chosen-container-active {
+    z-index: 10;
+    .search-field {
+      input {
+        z-index: 4 !important;
+      }
+    }
+  }
+
+  .chosen-container-multi .chosen-choices {
+    padding: 0;
+
+    li.search-choice {
+      width: 100%;
+      border: 0;
+      background: $gold;
+      color: white;
+      padding: 6px 8px;
+
+      .search-choice-close {
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        background-image: none !important;
+        font-size: 1em !important;
+
+        &:after {
+          content: "\f00d";
+          font-weight: 900;
+          font-family: "Font Awesome 5 Free";
+          color: $rubine;
+          display: inline-block;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+        }
+      }
+    }
+
+    .search-field {
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+      width: 100%;
+      position: relative;
+      //background: black;
+      border: 1px solid $gold;
+
+      input {
+        //color: white;
+        width: 100% !important;
+        z-index: 0;
+        position: relative;
+        background: white !important;
+        color: $gold !important;
+        padding: 6px 8px;
+      }
+
+      &:hover:before {
+        cursor: pointer;
+      }
+
+      .placeholder {
+        //background: red;
+        //content: "Filter hinzufügen";
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        line-height: 1;
+        color: $gold;
+        padding: 6px 8px;
+        z-index: 1;
+      }
+
+      i.fas.fa-chevron-down:first-of-type {
+        position: absolute;
+        top: 4px;
+        right: 7px;
+        color: $gold;
+        z-index: 5;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      i.fas.fa-chevron-down:last-child {
+        position: absolute;
+        right: 7px;
+        top: 10px;
+        color: $gold;
+        z-index: 5;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.am-dropdown .am-select,
+.am-dropdown .chosen-container {
+  .chosen-container-active .chosen-choices {
+    box-shadow: none;
+  }
+  .chosen-choices {
+    border-color: $gold;
+  }
+}
+
+.filter-options-content select {
+  color: $gold;
+}
+
+.block-content.filter-content {
+  .block-actions.filter-actions,
+  strong.block-subtitle.filter-subtitle,
+  div#am-shopby-container {
+    display: none;
+  }
+}
+
+.amasty-catalog-topnav.catalog-topnav .filter-options .filter-options-content {
+  z-index: unset;
+}
+
+.page-products {
+  #maincontent {
+    position: relative;
+
+    &.loading::after {
+      content: "";
+      position: absolute;
+      background-color: #fff;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+    }
+  }
+
+  .column.main {
+    position: relative;
+
+    .toolbar-products {
+      padding: 0;
+
+      .toolbar-sorter {
+        display: flex;
+        align-items: center;
+
+        select#sorter {
+          order: 2;
+          margin: 0;
+          border-color: $gold;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .catalog-topnav {
+    display: block;
+
+    .filter-options .filter-options-content {
+      width: 49%;
+      margin: 6px 0;
+      min-width: 150px;
+      max-width: 150px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .amasty-catalog-topnav.catalog-topnav .filter-options .filter-options-content {
+    min-width: 150px;
+    //max-width: 150px;
+    margin-right: 20px;
+    z-index: unset;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+  .amasty-catalog-topnav.catalog-topnav .filter-options#narrow-by-list > div {
+    width: calc(100% / 3);
+  }
+  .page-with-filter {
+    .column.main {
+      .page-title,
+      .catalog-topnav.amasty-catalog-topnav,
+      .toolbar.toolbar-products {
+        margin-left: 40px;
+      }
+    }
+  }
+}

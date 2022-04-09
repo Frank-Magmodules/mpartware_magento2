@@ -1,0 +1,106 @@
+<?php
+$categoryBlock = $block->getLayout()->createBlock('G3\g3core\Block\Html\Categorylist');
+//$currentProductCategory = $categoryBlock->getCurrentCategory();
+
+//$categories = $categoryBlock->getCategoryCollection(true,4,false,false);
+$currentCategory = $categoryBlock->getCurrentCategory();
+
+//$newcategories = $categoryBlock->getCategoryCollection(true,4,'position',false);
+//$childrenCategories = $category->getChildrenCategories(); // Of current Category
+//$parentId = $category->getParentId($currentCategory->getId());
+
+// Load category by category ID
+$category = $categoryBlock->getCategory($currentCategory->getId());
+
+
+$parentCategory = $category->getParentCategories();
+$topParentName = reset($parentCategory);
+$topParentID = key($parentCategory);
+
+$subCategories = $categoryBlock->getAllChildren($topParentID);
+
+$product = $categoryBlock->getCurrentProduct();
+$currentCategoryId = $product->getcategoryIds();
+$currentCategoryId = reset($currentCategoryId);
+
+
+$temp = $categoryBlock->getParentId($currentCategoryId);
+$parentCategories = [];
+$parentCategories[] = $currentCategoryId;
+
+
+/// Create Breadcrumb for Products
+categoryList($temp, $parentCategories, $categoryBlock);
+function categoryList($temp, $parentCategories, $categoryBlock) {
+    if ($temp === '2') {
+        foreach($parentCategories as $value) {
+            //echo($categoryBlock->getCategory($value)->getName());
+        }
+        return $parentCategories;
+    } else {
+        $parentCategories[] = $temp;
+        $temp = $categoryBlock->getParentId($temp);
+        categoryList($temp, $parentCategories, $categoryBlock);
+    }
+}
+
+
+
+
+//$blub = $categoryBlock->getParentId($currentCategoryId);
+//echo($blub);
+//$blub = $categoryBlock->getParentId($blub);
+//echo($blub);
+//$blub = $categoryBlock->getParentId($blub);
+//echo($blub);
+?>
+<div class="sidebar-categories">
+    <div class="category-top-parent" data-value=""><a href="<?php echo ($topParentName->getUrl()); ?>"><?php echo ($topParentName->getName()); ?></a></div>
+    <ul>
+        <?php                     
+            foreach($subCategories as $sub) {               
+                 
+                //echo ('<i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down"></i><li class="parent-category"><a href="'.$sub->getUrl().'">'.$sub->getName().'</a></li>');
+                if ($sub->getChildrenCategories()->count()){
+                    if ($categoryBlock->getParentId($currentCategoryId) === $sub->getId() || $currentCategoryId === $sub->getId()) {
+                        echo ('<li class="parent-category active open"><span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down"></i>'.$sub->getName().'</span>');
+                    } else {
+                        echo ('<li class="parent-category"><span><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down"></i>'.$sub->getName().'</span>');
+                    }  
+                    echo('<ul>');
+                    foreach($sub->getChildrenCategories() as $child) {
+                        if ($currentCategoryId === $child->getId()) {
+                            echo ('<li class="child-category active">'.$child->getName().'</li>');
+                        } else {
+                            echo ('<li class="child-category"><a href="'.$child->getUrl().'">'.$child->getName().'</a></li>');
+                        }
+                    }
+                    echo('</ul></li>');
+                } else {
+                    if ($categoryBlock->getParentId($currentCategoryId) === $sub->getId() || $currentCategoryId === $sub->getId()) {
+                        echo ('<li class="parent-category active open no-children"><span>'.$sub->getName().'</span></li>');
+                    } else {
+                        echo ('<li class="parent-category no-children"><span>'.$sub->getName().'</span></li>');
+                    }  
+                }
+            }
+        ?>
+    </ul>
+</div>
+<script>
+    require([
+        'jquery',
+    ], function ($) {
+        $(function () {
+            var catName = $('.category-top-parent').text();
+            var catNum = '';
+
+            $('.category-item .right-span').each(function(){
+                if ($(this).text() === catName) {
+                    $('.category-top-parent').attr('data-value', $(this).prev().text());
+                }
+            });
+            
+        });
+    });
+</script>

@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+switch ($blockObj->getLang()) {
+
+    case 'de':
+        $special = 'Spezialbedarf für Design und Grafik';
+        $country = 'Deutschland';
+        break;
+
+    case 'en':
+        $special = 'Special needs for design and graphics';
+        $country = 'Germany';
+        break;
+}
+?>
+<div class="copyright">
+    <p>Copyright © <?php echo date("Y"); ?> by MP artware – Marlene Plankenhorn <?php echo $special; ?></p>
+</div>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<paypalpluscw>
+			<information>
+				<version>2.0.357</version>
+			</information>
+			<shop>
+				<alias_management>0</alias_management>
+				<await_notification>1</await_notification>
+				<external_checkout_account_creation>force_selection</external_checkout_account_creation>
+			</shop>
+			<logging>
+				<level>error</level>
+			</logging>
+			<general>
+				<operation_mode><![CDATA[test]]></operation_mode>
+				<rest_client_id_live/>
+				<rest_client_secret_live/>
+				<rest_client_id_test/>
+				<rest_client_secret_test/>
+				<order_description_schema><![CDATA[Order {id}]]></order_description_schema>
+				<shop_name><![CDATA[This shop]]></shop_name>
+				<seller_protection><![CDATA[ineligible]]></seller_protection>
+				<address_check><![CDATA[enabled]]></address_check>
+			</general>
+		</paypalpluscw>
+		<payment>
+			<paypalpluscw_paypal>
+				<active>0</active>
+				<model>Customweb\PayPalPlusCw\Model\Payment\Method\PayPal</model>
+				<payment_action>initialize</payment_action>
+				<group>paypalpluscw</group>
+				<title><![CDATA[PayPal]]></title>
+				<description><![CDATA[Pay with PayPal]]></description>
+				<show_image>1</show_image>
+				<show_payment_id>1</show_payment_id>
+				<base_currency>0</base_currency>
+				<allowspecific>0</allowspecific>
+				<settlement>deferred</settlement>
+				<invoice_email>0</invoice_email>
+			<capturing><![CDATA[sale]]></capturing>
+				<authorizationMethod><![CDATA[PaymentPage]]></authorizationMethod>
+			</paypalpluscw_paypal><paypalpluscw_paypalplus>
+				<active>0</active>
+				<model>Customweb\PayPalPlusCw\Model\Payment\Method\PayPalPlus</model>
+				<payment_action>initialize</payment_action>
+				<group>paypalpluscw</group>
+				<title><![CDATA[PayPal Plus]]></title>
+				<description><![CDATA[Pay with PayPal Plus]]></description>
+				<show_image>1</show_image>
+				<show_payment_id>1</show_payment_id>
+				<base_currency>0</base_currency>
+				<allowspecific>0</allowspecific>
+				<settlement>deferred</settlement>
+				<invoice_email>0</invoice_email>
+			<authorizationMethod><![CDATA[AjaxAuthorization]]></authorizationMethod>
+			</paypalpluscw_paypalplus>
+		</payment>
+	</default>
+</config>

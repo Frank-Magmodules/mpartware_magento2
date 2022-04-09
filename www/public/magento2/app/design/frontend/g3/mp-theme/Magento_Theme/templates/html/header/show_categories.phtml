@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+switch ($blockObj->getLang()) {
+
+    case 'de':
+        $string_desktop = 'In Kategorien Blättern';
+        $string_mobile = 'Kategorien';
+        $string_url = '/kategorien';
+        break;
+
+    case 'en':
+        $string_desktop = 'Search in categories';
+        $string_mobile = 'Categories';
+        $string_url = '/categories';
+        break;
+}
+?>
+<a href="<?php echo $string_url; ?>">
+    <span class="desktop-txt"><?php echo $string_desktop; ?></span><span class="mobile-txt"><?php echo $string_mobile; ?></span>
+    <i class="fas fa-chevron-right"></i>
+    <i class="fas fa-chevron-right"></i>
+    <i class="fas fa-chevron-right"></i>
+    <i class="fas fa-chevron-right"></i>
+</a>

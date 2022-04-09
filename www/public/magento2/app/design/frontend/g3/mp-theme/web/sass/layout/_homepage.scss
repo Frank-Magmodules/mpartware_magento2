@@ -1,0 +1,41 @@
+.login-buttons {
+    margin: 2em 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.link-btn-rubine {
+  background: $rubine;
+  color: $white;
+  padding: 6px 14px;
+
+  &:visited,
+  &:hover {
+    color: $white;
+  }
+}
+
+.breadcrumbs {
+    margin: 40px 0 0;
+}
+
+.block.widget.block-products-list.grid {
+    .block-title strong {
+        color: $gold;
+        @include font-size(2);
+        text-transform: uppercase;
+        margin-top: 2em;
+        border-bottom: 1px solid $gold;
+        font-family: 'Prata', serif;
+    }
+}
+
+@media (min-width: 768px) {
+    .block.widget.block-products-list.grid .block-title strong {
+        @include font-size(4);
+    }
+    .login-buttons {
+        display: block;
+        justify-content: unset;
+    }
+}

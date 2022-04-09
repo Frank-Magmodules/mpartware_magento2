@@ -1,0 +1,39 @@
+span.counter-number {
+  padding-left: 0;
+}
+
+.minicart-wrapper .action.showcart .counter.qty,
+li.link.wishlist span.counter.qty {
+  background: $rubine;
+  height: 16px;
+  width: 18px;
+  line-height: 16px;
+  border-radius: 50%;
+  margin: -3px 8px 0;
+  min-width: 16px;
+  padding: 0;
+  position: absolute;
+  top: -11px;
+  left: 0px;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+}
+
+li.link.wishlist span.counter.qty {
+  top: -12px;
+}
+
+li.link.wishlist .counter{
+  display: none;
+}
+
+li.link.wishlist a {
+  position: relative;
+}
+
+@media (max-width:768px){
+  li.link.wishlist span.counter.qty {
+    top: -9px;
+  }
+}

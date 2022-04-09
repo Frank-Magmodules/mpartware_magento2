@@ -1,0 +1,108 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+$welcomeMessage = $block->getWelcome();
+//$blockObj = $block->getLayout()->createBlock('g3\G3CORE\Block\Html\GetGender');
+//foreach ($blockObj->getCustomerGenderOptions() as $genderOption) {
+//    echo ($genderOption['label']);
+//}
+$blockCustomer = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetCustomerInfo');
+$blockLang = $block->getLayout()->createBlock('g3\G3CORE\Block\Html\GetLanguage');
+switch ($blockLang->getLang()) {
+    case 'de':
+        switch ($blockCustomer->getCustomerGender()) {
+            case '1':
+                $salutation = 'Herr';
+                break;
+
+            case '2':
+                $salutation = 'Frau';
+                break;
+
+            case '3':
+                $salutation = 'Divers';
+                break;
+
+            default:
+                $salutation = 'Servas!';
+                break;
+        }
+        break;
+
+    case 'en':
+        switch ($blockCustomer->getCustomerGender()) {
+            case '1':
+                $salutation = 'Mr';
+                break;
+
+            case '2':
+                $salutation = 'Mrs';
+                break;
+
+            case '3':
+                $salutation = 'Divers';
+                break;
+
+            default:
+                $salutation = 'Servas!';
+                break;
+        }
+        break;
+}
+
+?>
+<?php switch ($block->getShowPart()):
+    case 'welcome': ?>
+        <div class="greet welcome" data-bind="scope: 'customer'">
+            <?php if ($blockLang->getLang() == 'de') : ?>
+                <span><?php echo ($blockCustomer->userIsLoggedIn() ? 'Guten ' : 'Herzlich Willkommen!');?> <span class="daytime"></span><?php echo ($blockCustomer->userIsLoggedIn() ? ', '.$salutation : '');?> <?php echo ($blockCustomer->userIsLoggedIn() ? $blockCustomer->getCustomerLastName().'!' : ''); ?>
+                </span>
+            <?php else: ?>
+                <span><?php echo ($blockCustomer->userIsLoggedIn() ? 'Good ' : 'Welcome to our store!');?> <span class="daytime"></span><?php echo ($blockCustomer->userIsLoggedIn() ? ', '.$salutation : '');?> <?php echo ($blockCustomer->userIsLoggedIn() ? $blockCustomer->getCustomerLastName().'!' : ''); ?>
+            </span>
+            <?php endif; ?>
+        </div>
+        <script>
+            
+            require([
+                'jquery',
+            ], function ($) {
+                jQuery(function(){
+                    if ($('.customer-logged-in').length) {
+                        var hr = (new Date()).getHours();
+                        var lang = document.documentElement.lang;
+                        var daytime = '';
+
+                        if (hr >= 0 && hr < 12) {
+                            if (lang === 'de') daytime = 'Morgen';
+                            if (lang === 'en') daytime = 'morning';
+                        } else if (hr >= 12 && hr < 17) {
+                            if (lang === 'de') daytime = 'Mittag';
+                            if (lang === 'en') daytime = 'midday';
+                        } else if (hr >= 17 && hr < 20) {
+                            if (lang === 'de') daytime = 'Abend';
+                            if (lang === 'en') daytime = 'evening';
+                        } else {
+                            if (lang === 'de') daytime = 'Nacht';
+                            if (lang === 'en') daytime = 'night';
+                        }
+                        $('.daytime').text(daytime);
+                    }
+                });
+            });
+        </script>
+    <?php break; ?>
+
+    <?php case 'other': ?>
+        <?php echo $block->getChildHtml(); ?>
+    <?php break; ?>
+
+<?php endswitch; ?>

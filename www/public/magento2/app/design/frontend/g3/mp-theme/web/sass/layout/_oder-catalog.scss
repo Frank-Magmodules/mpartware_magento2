@@ -1,0 +1,63 @@
+.cms-katalog-bestellen,
+.cms-order-catalog {
+  .amform-groupv2 {
+    max-width: 300px;
+    float: left;
+
+    img {
+      display: block;
+    }
+
+    &:first-child {
+      margin-right: 50px;
+    }
+  }
+
+  .field.required.control.amcform-gdpr {
+    margin: 2em 0;
+  }
+
+  #text-1611846689113 {
+    font-weight: bold;
+    margin-top: 3em;
+  }
+
+  .fieldset .fields .amform-layout-two:nth-of-type(2n + 1) {
+    margin-right: 0;
+    margin-left: 2%;
+  }
+}
+
+@media(min-width:768px) {
+  .cms-katalog-bestellen,
+  .cms-order-catalog {
+    .left-col, .right-col {
+      width: 49%;
+    }
+
+    .right-col {
+      margin-top: 10px;
+
+      .field.fb-checkbox{
+        margin-top: -10px;
+        margin-bottom: 20px;
+
+        > label{
+          display: block;
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    .full-col {
+      width: 100%;
+    }
+  
+    div#page-0 {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+}
+

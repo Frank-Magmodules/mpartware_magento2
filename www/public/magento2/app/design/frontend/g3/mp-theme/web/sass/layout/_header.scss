@@ -1,0 +1,165 @@
+.nav-toggle {
+    left: unset;
+    right: 15px;
+    //position: absolute;
+    width: 36px;
+    height: 36px;
+    //left: unset;
+    //right: 15px;
+    //top: 12px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+        display: none!important;
+    }
+
+    .toggle-wrapper {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        margin: 23px 0 0 0;
+        background: $gold;
+        transition: 350ms ease all;
+        top: 0;
+        left: 0;
+
+        &:before,
+        &:after {
+            content: " ";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: $gold;
+            transition: 350ms ease all;
+        }
+
+        &:before {
+            margin: -10px 0 0 0;
+        }
+
+        &:after {
+            margin: 10px 0 0 0;
+        }
+    }
+
+    & > span {
+        clip: inherit;
+        overflow: inherit;
+    }
+}
+
+.nav-open .nav-toggle .toggle-wrapper {
+    background-color: transparent;
+
+    &:before {
+        transform: rotate(135deg);
+        margin: 0;
+    }
+
+    &:after {
+        transform: rotate(-135deg);
+        margin: 0;
+    }
+}
+
+.logo {
+    width: 50px;
+    margin: 0 0 10px 0;
+
+    img {
+        height: auto;
+    }
+}
+
+.cat_title {
+    text-transform: none;
+    color: $gold;
+}
+
+#cookie-status {
+    display: none;
+}
+
+div#switcher-language {
+    float: right;
+}
+
+@media (min-width: 400px) {
+    .logo {
+        width: 80px;
+    }
+}
+
+@media (min-width: 768px) {
+    .mp-theme .header.content {
+        padding: 76px 20px 0px;
+        transition: .5s;
+    }
+
+    .logo {
+        width: 120px;
+        margin: 0 0 10px 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -20px;
+        position: absolute;
+        transition: .5s;
+    }
+
+    span.action.nav-toggle {
+        transition: .5s;
+        display: block;
+        right: unset;
+        top: 58px;
+        //top: unset;
+        //bottom: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile{
+        .header.content{
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1em;
+
+            span.nav-toggle{
+                position: static;
+                order: 3;
+
+                .toggle-wrapper{
+                    margin: 0;
+                    position: relative;
+                    top: 50%;
+
+                    &:before, &:after{
+                        width: 36px;
+                    }
+                }
+            }
+
+            .logo{
+                margin-bottom: 0;
+            }
+        }
+
+        &.checkout-index-index{
+            .header.content{
+                .logo{
+                    order: 1;
+                }
+
+                .mobile-shop-links{
+                    order: 2;
+                }
+
+                span.nav-toggle{
+                    order: 3;
+                    display:block;
+                }
+            }
+        }
+    }
+}

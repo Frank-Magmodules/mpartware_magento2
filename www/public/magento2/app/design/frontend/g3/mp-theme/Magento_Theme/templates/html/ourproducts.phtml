@@ -1,0 +1,75 @@
+<?php
+$blockObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetPage');
+$langObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+$categoryBlock = $block->getLayout()->createBlock('G3\g3core\Block\Html\Categorylist');
+$categories = $categoryBlock->getCategoryCollection(true,2,false,false);
+
+switch ($langObj->getLang()) {
+
+    case 'de':
+        $title = 'Unsere Produkte';
+        $toProducts = 'zu den Produkten';
+        break;
+
+    case 'en':
+        $title = 'Our products';
+        $toProducts = 'to the products';
+        break;
+}
+?>
+
+<?php if ($blockObj->currentPage() == 'home'): ?>
+    <div class="ourproducts">
+        <h2 class=""><?= $title ?></h2>
+        <!--<div class="category-list">-->
+        <div class="category-list"> 
+        <?php
+            $counter = 0;
+            $last_key = count($categories);
+            foreach ($categories as $category) {
+                if ($category->getId() != '2' && $counter <= 15) {
+                    if ($counter == 1 || $counter == 4 || $counter == 7 || $counter == 10 || $counter == 13) {
+                        echo('<div class="column-container">');
+                    }
+
+                    if ($category->getId() == '3') {
+                        echo('<div class="item active" data-num="' . $counter . '">'. $category->getName() . '</div>');
+                    } else {
+                        echo('<div class="item" data-num="' . $counter . '">'. $category->getName() . '</div>');
+                    }
+                    
+                    if ($counter == 3 || $counter == 6 || $counter == 9 || $counter == 12 || $counter == 15) {
+                        echo('</div>');
+                    }
+                    if ($counter != 15 && $counter == ($last_key-1)) {
+                        echo('</div>');
+                    }
+                }
+                $counter++;
+            }            
+        ?>
+        </div>
+        <!--</div>-->
+        <div class="category-content">
+        <?php
+            $counter = 0;
+            foreach ($categories as $category) {
+                
+                if ($category->getId() != '2') {
+                    echo('<div class="category-item" data-num="' . $counter . '">');
+                        echo('<div class="img-wrapper"><img src="'.$category->getImageUrl().'"></div>');
+                        echo('<div class="category-text">');
+                            echo('<div class="title-wrapper"><span class="color-item cat_no_' . $counter . '" data-num="' . $counter . '">' . $counter . '</span><h3>'.$category->getName().'</h3></div>');
+                            echo('<div class="category-description">'.$category->getDescription().'</div>');
+                            echo('<a class="color-link" href="' . $category->getUrl() . '">'. $toProducts .'</a>');
+                        echo('</div>');
+                    echo('</div>');
+                }
+                $counter++;
+                
+            }
+        ?>
+        </div>
+    </div>
+    <p>&nbsp;</p>
+<?php endif; ?>

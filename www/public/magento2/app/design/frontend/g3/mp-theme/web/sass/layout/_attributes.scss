@@ -1,0 +1,122 @@
+span.attribute-sub {
+    display: block;
+    position: absolute;
+    transform: translate(-50%, 100%);
+    left: 50%;
+    width: 100%;
+    top: 25px;
+    font-size: 80%;
+    line-height: 1.25;
+}
+
+span.attribute-label {
+    display: block;
+    font-size: 80%;
+    margin-top: 5px;
+}
+
+.swatch-attribute-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.swatch-option {
+    overflow: visible!important;
+    float: none;
+    margin: 25px auto 0 auto;
+}
+
+.swatch-wrapper {
+    width: calc(100% / 2);
+    position: relative;
+    text-align: center;
+    margin-bottom: 60px;
+    height: 180px;
+    min-width: 170px;
+    padding: 0 5px;
+}
+
+.swatch-option.image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.swatch-wrapper.selected,
+.swatch-wrapper:hover {
+    outline: 2px solid $rubine;
+}
+
+.swatch-option.selected {
+    outline: none;
+    border: none;
+}
+
+.swatch-option:focus,
+.swatch-option.image:not(.disabled):hover,
+.swatch-option.color:not(.disabled):hover {
+    border: 1px solid #dadada;
+    outline: none;
+    box-shadow: none;
+}
+
+.swatch-more {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    i.fas.fa-chevron-down {
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, -6px);
+        &.second {
+            transform: translate(-50%, 1px);
+        }
+    }
+}
+
+.page-product-configurable .swatch-wrapper:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: transparent;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.page-product-configurable .swatch-wrapper:hover:before {
+    cursor: pointer;
+}
+
+@media(min-width: 450px) {
+    .swatch-wrapper {
+        width: calc(100% / 2);
+    }
+}
+
+@media(min-width: 570px) {
+    .swatch-wrapper {
+        width: calc(100% / 2);
+    }
+}
+
+@media(min-width: 768px) {
+    .swatch-wrapper {
+        width: calc(100% / 3);
+    }
+}
+
+@media(min-width: 992px) {
+    .swatch-wrapper {
+        width: calc(100% / 4);
+    }
+}
+
+@media(min-width: 1200px) {
+    .swatch-wrapper {
+        width: calc(100% / 5);
+    }
+}

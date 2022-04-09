@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+ $blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+ switch ($blockObj->getLang()) {
+
+     case 'de':
+         $contact = 'Kontakt';
+         $contact_link = '/kontakt';
+         $download = 'Downloads';
+         $download_link = '/downloads';
+         break;
+
+     case 'en':
+         $contact = 'Contact';
+         $contact_link = '/en/contact';
+         $download = 'Downloads';
+         $download_link = '/en/downloads';
+         break;
+ }
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<span data-action="toggle-nav" class="action nav-toggle"><span class="toggle-wrapper"><span><?php /* @escapeNotVerified */ echo __('Toggle Nav') ?></span></span></span>
+<!--<ul class="contact_header">
+    <li><a href="<?php //echo $contact_link; ?>"><span data-bind="i18n: '<?php //echo $contact; ?>'"></span></a></li>
+    <li><a href="<?php //echo $download_link; ?>"><span data-bind="i18n: '<?php //echo $download; ?>'"></span></a></li>
+</ul>
+-->
+
+
+
+<?php if ($block->isHomePage()):?>
+    <strong class="logo">
+<?php else: ?>
+    <a class="logo" href="<?php echo $block->getUrl(''); ?>" title="<?php /* @escapeNotVerified */ echo $storeName ?>">
+<?php endif ?>
+        <img src="<?php /* @escapeNotVerified */ echo $block->getLogoSrc() ?>"
+             alt="<?php /* @escapeNotVerified */ echo $block->getLogoAlt() ?>"
+             <?php echo $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+             <?php echo $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+        />
+<?php if ($block->isHomePage()):?>
+    </strong>
+<?php else:?>
+    </a>
+<?php endif?>
+<a class="shop-link" href="/">MP artware<i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></a>

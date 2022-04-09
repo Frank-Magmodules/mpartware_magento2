@@ -1,0 +1,123 @@
+<?php
+    $blockObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetPage');
+    $langObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+    $testimonialArray = [];
+
+    switch ($langObj->getLang()) {
+        case 'de':
+            $title = 'Kundenstimmen';
+            $introText = 'Seit über 30 Jahren ist Marlene Plankenhorn nun schon erfolgreich unterwegs. Wie wenig andere kennt sie die vielseitigen Anforderungen der Kreativ-Branche und bietet die entsprechenden Lösungen: passgenau, professionell, persönlich.<br> Unzählige Kunden auf der ganzen Welt hat sie damit schon begeistert – und es werden täglich mehr.&nbsp;';
+            $testimonialArray = [
+                array(
+                    'title' => 'Adam Wilmot<span class="rubine"><span class="rubine">/</span></span>57<span class="rubine">/</span>Vehicle Stylist',
+                    'content' => 'Nichts ist besser, als ein großartiges Design auch mit den eigenen Händen anfassen zu können.',
+                    'id' => '4'
+                ),
+                array(
+                    'title' => 'Simon Brendle<span class="rubine"><span class="rubine">/</span></span>52<span class="rubine">/</span>Concept Artist',
+                    'content' => 'Nuancen machen das Leben aus. Farbe bestimmt unser Leben ohne, dass wir es bewusst wahrnehmen.',
+                    'id' => '1'
+                ),
+                array(
+                    'title' => 'Kathrin Briglmayr<span class="rubine"><span class="rubine">/</span></span>23<span class="rubine">/</span>Designerin',
+                    'content' => 'Jeder Pitch hängt von der Präsentation ab. Oft hilft es, wenn Kunden eine Idee einfach in den Händen halten können.',
+                    'id' => '2'
+                ),
+                array(
+                    'title' => 'Mario Donari<span class="rubine"><span class="rubine">/</span></span>49<span class="rubine">/</span>Industriedesigner',
+                    'content' => 'Den kleinen Funken einer bestechenden Idee entfache ich oft beim Durchforsten meiner Büchersammlung.',
+                    'id' => '3'
+                ),
+                array(
+                    'title' => 'Aileen Walsh<span class="rubine"><span class="rubine">/</span></span>29<span class="rubine">/</span>Concept Artist',
+                    'content' => 'Als Kind vom Land wollte ich in andere Welten entfliehen und hatte mein Zeichenwerkzeug immer im Gepäck.',
+                    'id' => '5'
+                ),
+                array(
+                    'title' => 'Miriam Dubois<span class="rubine"><span class="rubine">/</span></span>23<span class="rubine">/</span>Junior Art Director',
+                    'content' => 'Ich breche gerne Sehgewohnheiten – manchmal muss es einfach knallig sein, finde ich.',
+                    'id' => '6'
+                ),
+                array(
+                    'title' => 'Daniel Steiger<span class="rubine"><span class="rubine">/</span></span>35<span class="rubine">/</span>Fotograf',
+                    'content' => 'Dahergekommenes ganz anders erscheinen zu lassen – und umgekehrt – erneuert unsere Weltsicht.',
+                    'id' => '7'
+                ),
+            ];
+            break;
+    
+        case 'en':
+            $title = 'Customer voices';
+            $introText = 'Marlene Plankenhorn has successfully been working away for more than 30 years. Very few people know the versatile requirements of the creative sector as well as she does, and she can offer what is needed to meet those requirements: Accurately, professionally and personally. <br>She has already delighted countless customers around the world - and their ranks swell further every day.';
+
+            $testimonialArray = [
+                array(
+                    'title' => 'Adam Wilmot<span class="rubine"><span class="rubine">/</span></span>57<span class="rubine">/</span>Vehicle Stylist',
+                    'content' => 'Nothing is better than to be able to hold a great design in your own hands.',
+                    'id' => '4'
+                ),
+                array(
+                    'title' => 'Simon Brendle<span class="rubine"><span class="rubine">/</span></span>52<span class="rubine">/</span>Concept Artist',
+                    'content' => 'Nuances define life. Color defines our life without our being consciously aware of the fact.',
+                    'id' => '1'
+                ),
+                array(
+                    'title' => 'Kathrin Briglmayr<span class="rubine"><span class="rubine">/</span></span>23<span class="rubine">/</span>Designer',
+                    'content' => 'Every pitch depends on the presentation. It can often help if customers are simply able to hold an idea in their hands.',
+                    'id' => '2'
+                ),
+                array(
+                    'title' => 'Mario Donari<span class="rubine"><span class="rubine">/</span></span>49<span class="rubine">/</span>Industrial designer',
+                    'content' => 'I often find the tiny spark that ignites a compelling idea by ploughing through my collection of books.',
+                    'id' => '3'
+                ),
+                array(
+                    'title' => 'Aileen Walsh<span class="rubine"><span class="rubine">/</span></span>29<span class="rubine">/</span>Concept Artist',
+                    'content' => 'As a child from the country, I wanted to escape into other worlds, and I always had my drawing tools in my luggage.',
+                    'id' => '5'
+                ),
+                array(
+                    'title' => 'Miriam Dubois<span class="rubine"><span class="rubine">/</span></span>23<span class="rubine">/</span>Junior Art Director',
+                    'content' => 'I like to break with my accustomed way of seeing - I sometimes find it simply has to be explosive.',
+                    'id' => '6'
+                ),
+                array(
+                    'title' => 'Daniel Steiger<span class="rubine"><span class="rubine">/</span></span>35<span class="rubine">/</span>Photographer',
+                    'content' => 'Making the known and familiar look different - and vice versa - refreshes our view of the world.',
+                    'id' => '7'
+                ),
+            ];
+            
+            break;
+    }
+?>
+<?php if ($blockObj->currentPage() == 'home'): ?>
+    <div class="testimonials">
+        <h2><?= $title ?></h3>
+        <div class="intro-text">
+            <P><?php echo($introText); ?></p>
+        </div>
+    </div>
+
+    <div class="testimonial-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+            <?php foreach ($testimonialArray as $key => $item): ?>  
+                <div class="swiper-slide">
+                    <img class="swiper-lazy slider_front_img image<?php echo($key); ?>" src="<?php echo $this->getViewFileUrl('images/testimonial-slider/Testimonial'.$item['id'].'.png'); ?>" width="1400" height="600" alt="">
+                    <!--<div class="swiper-lazy-preloader"></div>-->
+                    <div class="slider_img" style="background-image: url('<?php echo $this->getViewFileUrl('images/testimonial-slider/Hintergrund'.$item['id'].'.jpg'); ?>')"></div>
+                    <img class="slider_thumb_img" src="<?php echo $this->getViewFileUrl('images/testimonial-slider/Testimonial_Thumb'.$item['id'].'.png'); ?>" width="100" height="100" alt="">
+                    <div class="slider_txt text<?php echo($key); ?>">
+                        <p class="slider-header"><?php echo $item['title']; ?></p>
+                        <p class="fancy"><?php echo $item['content']; ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>  
+            </div>
+            <div class="swiper-pagination"></div>    
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+<?php endif; ?>

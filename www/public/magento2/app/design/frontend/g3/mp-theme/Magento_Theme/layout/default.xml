@@ -1,0 +1,135 @@
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <attribute name="class" value="mp-theme"/>
+    <referenceBlock name="logo">
+        <arguments>
+            <argument name="logo_img_width" xsi:type="number">120</argument>
+            <argument name="logo_img_height" xsi:type="number">120</argument>
+        </arguments>
+    </referenceBlock>
+
+    <move element="header.panel.wrapper" destination="header.container" after="header.container" />
+
+    <referenceContainer name="header.container">
+        <container name="top.contact" htmlClass="top-contact panel header" htmlTag="div" before="-">
+            <block class="Magento\Framework\View\Element\Template" name="top_contact" before="-" template="Magento_Theme::html/header/top_contact.phtml" />
+        </container>
+    </referenceContainer>
+
+    <move element="store_language" destination="top.contact" after="top.contact" />
+    <!--<move element="brand_list" destination="content" after="content" />-->
+
+
+    <referenceContainer name="header.panel">
+        <container name="headerlinks-left" htmlClass="left-part" htmlTag="div" before="-">
+            <!--<container name="show.categories" htmlClass="show-categories" htmlTag="div" before="-">
+                <block class="Magento\Framework\View\Element\Template" name="show_category" before="-" template="Magento_Theme::html/header/show_categories.phtml" />
+            </container>
+            -->
+        </container>
+        <container name="headerlinks-right" htmlClass="right-part" htmlTag="div" after="-">
+        </container>
+    </referenceContainer>
+    <move element="header" destination="headerlinks-left" before="-" />
+    <move element="top.search" destination="headerlinks-left" after="-" />
+    <move element="top.links" destination="headerlinks-right" after="headerlinks-right" />
+
+    <referenceContainer name="header-wrapper">
+        <container name="mobile.links" htmlClass="mobile-shop-links" htmlTag="div" after="-">
+            <!-- Inser top.links -->
+            <block class="Magento\Framework\View\Element\Template" name="placeholder" before="-" template="Magento_Theme::placeholder.phtml" />           
+        </container>
+        <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+    </referenceContainer>   
+    
+    <referenceContainer name="page.wrapper">
+        <container name="slider.container" htmlClass="slider-container" htmlTag="div" before="main.content">
+            <block class="Magento\Framework\View\Element\Template" name="slider-homepage" template="Magento_Theme::html/slider.phtml" />
+        </container>
+        
+        <container name="show.sidebar" htmlClass="side-menu" htmlTag="div" after="-">
+            <block class="Magento\Framework\View\Element\Template" name="sidebar" before="-" template="Magento_Theme::html/sidebar.phtml" />
+        </container>
+    </referenceContainer>
+
+    <referenceContainer name="main">
+        <container name="ourproducts.container" htmlClass="ourproducts-container" htmlTag="div" after="-">
+            <block class="Magento\Framework\View\Element\Template" name="ourproducts-homepage" template="Magento_Theme::html/ourproducts.phtml" />
+        </container>
+        <container name="testimonials.container" htmlClass="testimonials-container" htmlTag="div" after="-">
+            <block class="Magento\Framework\View\Element\Template" name="testimonials-homepage" template="Magento_Theme::html/testimonials.phtml" />
+        </container>
+    </referenceContainer>
+
+    <referenceContainer name="footer">
+        <block class="Magento\Framework\View\Element\Template" name="custom-links" before="-" template="Magento_Theme::html/footerlinks.phtml" />
+    </referenceContainer>
+
+
+    <!--<referenceBlock name="top.links">
+        <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+             <arguments>
+                   <argument name="label" xsi:type="string" translate="true">My Account</argument>
+                   <argument name="class" xsi:type="string">account-link</argument>
+              </arguments>
+        </block>
+    </referenceBlock>-->
+    
+    <referenceBlock name="top.links">
+        <block class="Magento\Framework\View\Element\Template" name="myaccountlink" before="-" template="Magento_Theme::myaccountlink.phtml" />
+    </referenceBlock>
+
+    <move element="minicart" destination="top.links" after="myaccountlink" />
+
+    <referenceBlock name="navigation.sections">
+        <arguments>
+            <argument name="group_name" xsi:type="string">navigation-sections</argument>
+            <argument name="group_css" xsi:type="string">nav-sections</argument>
+        </arguments>
+        <block class="Magento\Framework\View\Element\Template" name="store.menu" group="navigation-sections" template="Magento_Theme::html/container.phtml">
+            <arguments>
+                <argument name="title" translate="true" xsi:type="string">Produkt Kategorien</argument>
+            </arguments>
+            <block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="html/topmenu.phtml" ttl="3600" before="-"/>
+        </block>
+        <block class="Magento\Framework\View\Element\Text" name="store.links" group="navigation-sections">
+            <arguments>
+                <argument name="title" translate="true" xsi:type="string">Account</argument>
+                <argument name="use_force" xsi:type="boolean">true</argument>
+                <argument name="text" xsi:type="string"><![CDATA[<!-- Account links -->]]></argument>
+            </arguments>
+        </block>
+        <block class="Magento\Framework\View\Element\Template" name="store.settings" group="navigation-sections" template="Magento_Theme::html/container.phtml">
+            <arguments>
+                <argument name="title" translate="true" xsi:type="string">Settings</argument>
+            </arguments>
+            <block class="Magento\Store\Block\Switcher" name="store.settings.language" template="switch/languages.phtml">
+                <arguments>
+                    <argument name="id_modifier" xsi:type="string">nav</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Directory\Block\Currency" name="store.settings.currency" template="currency.phtml">
+                <arguments>
+                    <argument name="id_modifier" xsi:type="string">nav</argument>
+                </arguments>
+            </block>
+        </block>
+    </referenceBlock>
+
+
+    <!--// REMOVED-->
+      
+
+    <referenceBlock name="my-account-link" remove="true" />
+    <referenceBlock name="register-link" remove="true" />
+    <referenceBlock name="advanced-search-link" remove="true"/>
+    <referenceBlock name="footer_links" remove="true" />
+    <referenceBlock name="form.subscribe" remove="true" />
+    <referenceBlock name="report.bugs" remove="true" />
+    <referenceBlock name="catalog.compare.link" remove="true" />
+    <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+    <referenceBlock name="skip_to_content" remove="true"/>   
+    <referenceBlock name="header" remove="true"/>   
+
+</body>
+</page>

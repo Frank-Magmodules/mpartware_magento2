@@ -1,0 +1,108 @@
+.checkout-cart-index {
+    .cart.table-wrapper .actions-toolbar > a.action.action-edit {
+        display: none;
+    }
+
+    .cart.table-wrapper .actions-toolbar > a.action.action-delete,
+    .cart.table-wrapper .actions-toolbar > a.action.towishlist.action-towishlist {
+        background: $rubine;
+        color: white;
+        font-weight: normal;
+        border: 1px solid $rubine;
+    }
+
+    .cart.main.actions{
+        padding: 0 10px;
+    }
+
+    .block-cart-failed .action.continue, 
+    .cart-container .form-cart .action.continue {
+        background: #d40057;
+        font-weight: 400;
+        border: none;
+        border-radius: 0;
+        //font-size: 1.6rem;
+        color: #fff;
+    }
+
+    .cart-container .checkout-methods-items a.action.multicheckout {
+        color: black;
+        font-weight: bold;
+    }
+
+    .cart.table-wrapper .item-actions .actions-toolbar {
+        text-align: left;
+    }
+
+    tr.amexfee-collapsible-block.-including-tax {
+        display: none;
+    }
+
+    .cart-empty {
+        a,
+        a:hover,
+        a:visited {
+            color: $rubine;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .checkout-cart-index {
+        .cart-summary {
+            margin-top: 1.5em;
+        }
+
+        .cart.table-wrapper .col.qty, 
+        .cart.table-wrapper .col.price, 
+        .cart.table-wrapper .col.msrp {
+            width: 50%;
+        }
+        .cart.table-wrapper .col.subtotal {
+            width: 100%;
+        }
+
+        .cart.table-wrapper .item .col.item {
+            padding-bottom: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart.table-wrapper .product-item-photo {
+            //display: inline;
+            left: 0;
+            max-width: 60px;
+            padding: 0 0 0 10px;
+            position: relative;
+            top: 0;
+            width: auto;
+            float: left;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+
+        .cart.table-wrapper .col.price, 
+        .cart.table-wrapper .col.subtotal, 
+        .cart.table-wrapper .col.msrp {
+            text-align: left;
+        }
+
+        .cart.table-wrapper .col.qty {
+            text-align: right;
+            padding-right: 0;
+        }
+
+        .cart.item tr td{
+            padding-left: 10px;
+        }
+
+        .cart.main.actions{
+            text-align: left;
+
+            button.action.update{
+                margin-left: 0;
+            }
+        }
+    }
+}

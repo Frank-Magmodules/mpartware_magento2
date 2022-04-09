@@ -1,0 +1,278 @@
+.panel.wrapper {
+  //overflow: hidden;
+  background: #000;
+  color: $white;
+  a {
+    color: $white;
+    &:visited {
+      color: $white;
+    }
+  }
+}
+
+a.shop-link {
+  float: right;
+  position: relative;
+  color: $gold;
+  font-family: Prata, serif;
+  display: none;
+  padding-right: 20px;
+  margin-right: 10px;
+  transition: .5s;
+  &:visited {
+    color: $gold;
+  }
+  i.fas.fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #d40057;
+    right: 0px;
+    &:nth-child(2) {
+      right: 7px;
+    }
+  }
+}
+
+div#minicart-content-wrapper {
+  color: black;
+  a {
+    color: black;
+    &:visited {
+      color: black;
+    }
+  }
+}
+
+.minicart-wrapper .action.showcart.active:before {
+  display: none;
+}
+
+ul.contact_header {
+  padding: 0;
+  list-style: none;
+  float: left;
+  left: 50px;
+  position: relative;
+  margin-bottom: 1em;
+  display: none;
+  li {
+    float: left;
+    margin: 0 30px;
+    a {
+      color: $gold;
+      font-family: Prata, serif;
+      &:visited {
+        color: $gold;
+      }
+    }
+  }
+}
+
+.greet.welcome {
+  margin: 1em 0;
+  display: none;
+}
+
+.block-minicart .subtitle.empty span {
+  color: $black;
+}
+
+#switcher-language-trigger .switcher-option {
+  position: relative;
+  font-weight: 400;
+  margin: 0;
+  &.active-lang {
+    font-weight: 700;
+  }
+  &:not(.active-lang) a {
+    color: $black;
+  }
+}
+
+#switcher-language-trigger .switcher-option:first-child {
+  margin-right: 10px;
+  &:after {
+    content: "|";
+    position: absolute;
+  }
+}
+
+.page-header .switcher .options .action.toggle:after,
+.page-footer .switcher .options .action.toggle:after {
+  display: none;
+}
+
+.section-item-content {
+  ul.header.links li {
+    width: 100%;
+    float: left;
+  }
+}
+
+.mobile .desktop-txt {
+  display: none;
+}
+
+.desktop .mobile-txt {
+  display: none;
+}
+
+.left-span,
+.right-span {
+  width: 50%;
+  float: left;
+  text-align: left;
+  line-height: 2;
+}
+
+// Overrides
+.minicart-wrapper {
+  .action.showcart:before {
+    display: none;
+  }
+}
+
+.show-categories {
+  margin: 20px 4% 20px 0;
+  a {
+    border: 1px solid white;
+    border-radius: 4px;
+    line-height: 2;
+    padding: 0 10px;
+    display: block;
+  }
+  i.fas.fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $rubine;
+    right: 10px;
+    &:nth-child(3) {
+      right: 18px;
+    }
+    &:nth-child(4) {
+      right: 26px;
+    }
+    &:nth-child(5) {
+      right: 34px;
+    }
+  }
+}
+
+.left-part {
+  position: relative;
+  .show-categories {
+    width: 48%;
+    //float: left;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.page-header .panel.wrapper {
+  border-bottom: none;
+  //overflow: inherit;
+}
+
+.page-header {
+  border: 0;
+  margin-bottom: 0;
+}
+
+.mobile-shop-links .header.links {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  font-size: 1.5em;
+  justify-content: space-evenly;
+  li a {
+    color: $rubine;
+  }
+  span.text,
+  .minicart-text {
+    display: none;
+  }
+}
+
+li.my-account-link {
+  order: 0;
+}
+
+li.minicart-wrapper {
+  order: 1;
+}
+
+li.link.wishlist {
+  order: 2;
+}
+
+li.authorization-link {
+  order: 3;
+}
+
+@media (min-width: 768px) {
+  .page-header {
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 100;
+    position: sticky;
+    background: white;
+  }
+  .left-part,
+  .right-part {
+    width: 50%;
+    float: left;
+    text-align: left;
+  }
+  .right-part {
+    //position: absolute;
+    //left: 50%;
+    //top: 50%;
+    //transform: translateY(-50%);
+  }
+  .panel.header {
+    position: relative;
+    .links>li {
+      //width: 50%;
+      margin: .5em 0;
+    }
+  }
+  .show-categories {
+    //padding: 0;
+    //width: 250px;
+    //margin: 0px 40px 2em 0;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $gold;
+    margin-top: 0;
+    //float: left;
+    //display: block;
+    a {
+      border: none;
+      padding: 0;
+    }
+  }
+  ul.contact_header {
+    display: block;
+  }
+  a.shop-link {
+    display: block;
+  }
+  .greet.welcome {
+    display: block;
+    margin: 1em 0 0;
+  }
+  .panel.wrapper {
+    border-top: 6px solid $rubine;
+  }
+  .header.links {
+    span.text,
+    .minicart-text {
+      padding-left: 4px;
+    }
+  }
+}

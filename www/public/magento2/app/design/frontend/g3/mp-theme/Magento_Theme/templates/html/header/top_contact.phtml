@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+switch ($blockObj->getLang()) {
+
+    case 'de':
+        $catalog = 'Katalog bestellen';
+        $catalog_link = '/de/katalog-bestellen';
+        break;
+
+    case 'en':
+    $catalog = 'Order catalog';
+    $catalog_link = '/en/order-catalog';
+        break;
+}
+?>
+<span class="tel"><a href="tel:0049742495910">+49-7424-9591-0</a></span>
+<span class="catalog"><a href="<?php echo $catalog_link; ?>"><?php echo $catalog; ?></a></span>

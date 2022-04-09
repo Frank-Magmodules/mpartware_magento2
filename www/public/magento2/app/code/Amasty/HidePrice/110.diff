@@ -1,0 +1,14 @@
+diff --git a/Helper/Data.php b/Helper/Data.php
+index b5ca18ec274e535a1224632b3d67e52ad9bff05c..6e254146ba4b01e67065487ae0afa488ff70fb17 100644
+--- a/Helper/Data.php
++++ b/Helper/Data.php
+@@ -274,7 +274,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
+     public function getNewPriceHtmlBox($product)
+     {
+         // help for magento swatches detect category page
+-        $html = sprintf('<div class="price-box price-final_price" data-product-id="%d"></div>', $product->getId());
++        $html = sprintf('<div class=price-final_price" data-product-id="%d"></div>', $product->getId());
+ 
+         $text = $this->filterManager->stripTags(
+             $this->getModuleConfig('frontend/text'),
+

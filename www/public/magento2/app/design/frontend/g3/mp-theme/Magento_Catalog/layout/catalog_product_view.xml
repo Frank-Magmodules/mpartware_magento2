@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="2columns-left" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true" />
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+        <referenceBlock name="product.info.sku" remove="true" />
+
+
+        <referenceBlock name="breadcrumbs" template="Magento_Catalog::product/breadcrumbs.phtml">
+            <arguments>
+                <argument name="viewModel" xsi:type="object">Magento\Catalog\ViewModel\Product\Breadcrumbs</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="page.wrapper">
+            <container name="category.container" htmlClass="category-container widget" htmlTag="div" before="main.content">
+                <block class="Magento\Framework\View\Element\Template" name="category-piano" template="Magento_Theme::html/category-piano.phtml" />
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="main.content">
+            <container name="back.to.category" htmlTag="div" htmlClass="back-to-category-container" before="-">
+                <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.back.to-categories" as="back-to-categories" template="Magento_Catalog::product/back-to-category.phtml" />
+            </container>
+            
+            <container name="addinfo" htmlTag="div" htmlClass="addinfo" after="product.info.details">
+                <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.additional.attributes" as="additional-info" template="Magento_Catalog::product/attributes.phtml" />
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <container name="order.row" htmlTag="div" htmlClass="order-row" after="main"></container>
+        </referenceContainer>  
+
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Framework\View\Element\Template" name="description-title" before="-" template="Magento_Catalog::product/title.phtml" />
+        </referenceContainer>        
+
+        <!--<referenceContainer name="sidebar.additional">
+            <block class="Magento\Catalog\Block\Product\View" name="product_view_custom_block" before="-" template="Magento_Catalog::product/product-sidebar.phtml"/>
+        </referenceContainer>
+        -->
+
+        
+        <move element="page.main.title" destination="main" before="-" />
+        <move element="product.info.details" destination="product.info.main" before="-" />
+        <move element="addinfo" destination="product.info.main" after="product.info.details" />
+        <move element="description-title" destination="product.info.main" before="-" />
+        <move element="product.info.description" destination="product.info.main" before="-" />
+        
+        <move element="product.info.price" destination="order.row" before="-" />
+        <move element="product.info" destination="order.row" after="-" />   
+        
+        <move element="product.info.social" destination="product.info.main" before="description.title" />    
+        <!--<move element="product.info.stock.sku" destination="addinfo" after="-" />-->
+
+        <referenceBlock name="product.info.stock.sku" remove="true" />
+        <referenceBlock name="product.info.details" remove="true" />
+    </body>
+</page>

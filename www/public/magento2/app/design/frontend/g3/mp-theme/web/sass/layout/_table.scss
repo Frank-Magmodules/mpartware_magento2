@@ -1,0 +1,62 @@
+.cmsContent h3 {
+    text-align: left;
+}
+
+.gen-table-container {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    .gen-table {
+        display: flex;
+        flex-wrap: wrap;
+
+        .item-data {
+            padding: 10px 0 0;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 33.333%;
+
+            &:nth-child(3n) {
+                padding-right: 0;
+            }
+
+            @media (max-width: 992px) {
+                flex: 1 1 100%;
+
+                &:last-child {
+                    display: none;
+                }
+            }
+
+            tbody {
+                max-width: 80%;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 330px;
+
+                tr {
+                    width: 100%;
+                    display: flex;
+                    td {
+                        padding: 10px 0 0;
+                        min-width: 33%;
+
+                        &:first-child {
+                            text-align: left;
+                            min-width: 25%;
+                        }
+                    }
+                }
+            }
+        }
+
+        h4 {
+            font-family: Montserrat,sans-serif;
+            font-size: 12px !important;
+            font-size: 1.6rem;
+            color: #333;
+            max-width: 80%;
+        }
+    }
+}

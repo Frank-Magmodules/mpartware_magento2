@@ -1,0 +1,76 @@
+<?php
+
+
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $block->getProduct();
+$blockObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+$productObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetProducts');
+
+switch ($blockObj->getLang()) {
+    case 'de':
+        $product_short = $_product->getData('sub1de');
+        $product_short2 = $_product->getData('sub2de');
+        break;
+
+    case 'en':
+        $product_short = $_product->getData('sub1en');
+        $product_short2 = $_product->getData('sub2en');
+        break;
+}
+
+?>
+<?php if (!empty($product_short)) : ?>
+    <h3>Details</h3>
+    <ul class="attribute-list">
+        <li><i class="fas fa-angle-double-right"></i><span class="sub1"><?php echo ($product_short); ?></span></li>
+        <?php if (!empty($product_short2)) : ?>
+            <li><i class="fas fa-angle-double-right"></i><span class="sub2"><?php echo ($product_short2); ?></span></li>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>
+
+<p><span><strong><?= $block->escapeHtml(__('SKU:')) ?></strong> <?= $block->escapeHtmlAttr($_product->getSku()) ?></span></p>
+
+<!--<?php if ($_product->getIsSalable() && !empty($_product->getData('delivery_time'))) : ?>
+    <div class="stock delivery-time hallotest"><span><strong><?= __('Delivery time') . ': ' . $_product->getData('delivery_time') ?></strong></span></div>
+<?php elseif ($_product->getIsSalable()) : ?>
+    <div class="stock available"><span><?= $block->escapeHtml(__('In stock')) ?></span></div>
+<?php else : ?>
+    <div class="stock unavailable"><span><?= $block->escapeHtml(__('Out of stock')) ?></span></div>
+<?php endif; ?>-->
+
+<?php
+$productId = $_product->getID();
+$pName = $_product->getName();
+$images = $_product->getMediaGalleryImages();
+$pImage = '';
+$pCode = "curCode";
+
+foreach ($images as $key => $image) {
+    $pImage = $image->getData('url');
+}
+
+// Parent elem generation
+// if ($_product->getTypeId() !== 'simple') {
+//     $childObj = $productObj->getConfigChildProductIds($productId);
+//     $optParentClone = '';
+
+//     $optParentClone .= '<div class="opt-parent-clone" style="visibility:hidden">';
+//     $optParentClone .= '   <div class="opt-class-container">';
+//     $optParentClone .= '        <div class="swatch-option image" id="option-label-ausfuehrung-' . $pCode . '-item-' . $productId . '" index="0" aria-checked="false"';
+//     $optParentClone .= '            aria-describedby="option-label-ausfuehrung-' . $pCode . '" tabindex="0" data-option-type="2" data-sku="'.$_product->getSku().'" data-option-id="' . $productId . '"';
+//     $optParentClone .= '            data-option-label="' . $pName . '" aria-label="' . $pName . '" role="option"';
+//     $optParentClone .= '            data-thumb-width="110" data-thumb-height="90"';
+//     $optParentClone .= '            data-option-tooltip-thumb="'.$pImage.'"';
+//     $optParentClone .= '            data-option-tooltip-value="'.$pImage.'"';
+//     $optParentClone .= '            style="background: url('.$pImage.') no-repeat center; background-size: initial;width:110px; height:90px">';
+//     $optParentClone .= '        </div><span>' . $pName . '</span>';
+//     $optParentClone .= '   </div>';
+//     $optParentClone .= '</div>';
+
+//     $tempString = '';
+
+//     echo $optParentClone . $tempString;
+// }
+
+?>

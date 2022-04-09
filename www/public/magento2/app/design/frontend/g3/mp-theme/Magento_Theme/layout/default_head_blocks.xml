@@ -1,0 +1,17 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- Add local resources -->
+    	<!--<css src="css/reset.css"/>-->
+        <css src="css/all.min.css"/>
+        <css src="css/swiper.min.css"/>
+        <css src="css/fancybox.min.css"/>
+        
+        <css src="css/styles-m.css" media="all"/>
+        <css src="css/styles-l.css" media="screen and (min-width: 768px)"/>
+        <css src="css/main.min.css" media="screen and (min-width: 1px)"/>
+
+        <!-- The following two ways to add local JavaScript files are equal -->
+        <!--<link src="js/main.min.js"/>-->
+        <link rel="stylesheet" type="text/css" src="https://fonts.googleapis.com/css?family=Montserrat:100,300|Prata" src_type="url" />
+    </head>
+</page>

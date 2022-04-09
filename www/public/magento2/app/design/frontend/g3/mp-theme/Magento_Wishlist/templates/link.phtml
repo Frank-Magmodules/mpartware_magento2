@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Wishlist\Block\Link */
+?>
+<li class="link wishlist" data-bind="scope: 'wishlist'">
+    <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes() ?>>
+        <i class="far fa-heart"></i>
+        <span class="text"><?php echo $block->escapeHtml($block->getLabel()) ?></span>
+
+        <!-- ko if: wishlist().counter -->
+        <span class="wishlist-placeholder" data-bind="text: wishlist().counter" style="display:none"></span>
+        <span class="counter qty"></span>
+        <script type="text/javascript">
+            require(['jquery','domReady!'], function($){
+                setTimeout(function(){ 
+                    $('li.link.wishlist .counter').text($('li.link.wishlist .wishlist-placeholder').text().split(' ')[0]).show(); 
+                }, 2000);                
+            })
+        </script>
+        <!-- /ko -->
+    </a>
+</li>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "wishlist": {
+                        "component": "Magento_Wishlist/js/view/wishlist"
+                    }
+                }
+            }
+        }
+    }
+</script>
+

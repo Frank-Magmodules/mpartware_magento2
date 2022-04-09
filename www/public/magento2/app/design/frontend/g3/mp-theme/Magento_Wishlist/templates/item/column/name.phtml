@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Info $block */
+
+/** @var \Magento\Wishlist\Model\Item $item */
+
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Options $block2 */
+$item = $block->getItem();
+$product = $item->getProduct();
+$options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct()); 
+$productObj = $block->getLayout()->createBlock('G3\g3core\Block\Html\GetProducts');
+?>
+<strong class="product-item-name">
+    <a href="<?= $block->escapeUrl($block->getProductUrl($item)) ?>" title="<?= $block->escapeHtmlAttr($product->getName()) ?>" class="product-item-link">
+        <?= $block->escapeHtml($product->getName()) ?>
+        <?php if ($options) : ?>
+            -
+        <?php 
+            // Selbes Spiel wie im Warenkorb, nur dass wir eine andere Variable verwenden müssen (warum auch immer), ansonsten aber das gleiche Prinzip 
+            $childObj = $productObj->getConfigChildProductIds($product->getID());
+            foreach ($options["attributes_info"] as $option) {
+                foreach ($childObj as $child){ 
+                    if ($child["ausfuehrung"] === $option["option_value"]) {
+        	            echo '<span class="option_attribute">' . $child->getData('sub1de') . '</span>';
+                    }    
+                }
+            }    
+        ?>
+    <?php endif ?>
+    </a>
+</strong>

@@ -1,0 +1,66 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+
+/**
+*  General template for displaying group of blocks devided into sections
+*/
+
+$group = $block->getGroupName();
+$groupCss = $block->getGroupCss();
+$groupBehavior = $block->getGroupBehaviour() ? $block->getGroupBehaviour() : '{"tabs":{"openedState":"active"}}';
+$blockObj= $block->getLayout()->createBlock('G3\g3core\Block\Html\GetLanguage');
+switch ($blockObj->getLang()) {
+
+    case 'de':
+        $backLink = 'Zurück';
+        $closeLink = 'Schließen';
+        break;
+
+    case 'en':
+        $backLink = 'Back';
+        $closeLink = 'Close';
+        break;
+}
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames($group, 'getChildHtml')):?>
+    <div class="sections <?php /* @escapeNotVerified */ echo $groupCss ?>">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="section-items <?php /* @escapeNotVerified */ echo $groupCss ?>-items" data-mage-init='<?php /* @escapeNotVerified */ echo $groupBehavior ?>'>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html) && ($block->getUseForce() != true)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <?php if ($alias == 'store.menu'): ?>
+                    <div class="section-item-title <?php /* @escapeNotVerified */ echo $groupCss ?>-item-title" data-role="collapsible">
+                        <a class="<?php /* @escapeNotVerified */ echo $groupCss ?>-item-switch" data-toggle="switch" href="#<?php /* @escapeNotVerified */ echo $alias; ?>"><?php /* @escapeNotVerified */ echo $label; ?></a>
+                    </div>
+                <?php endif; ?>
+                <?php if ($alias == 'store.links'): ?>
+                    <div class="section-item-content <?php /* @escapeNotVerified */ echo $groupCss ?>-item-content regular_links" id="<?php /* @escapeNotVerified */ echo $alias; ?>" data-role="content"><ul class="contact_header_mobile">
+                        <li><a href="/contact"><span data-bind="i18n: 'Kontakt'"></span></a></li>
+                        <li><a href="/downloads"><span data-bind="i18n: 'Download'"></span></a></li>
+                    </ul><?php /* @escapeNotVerified */ echo $html; ?></div>
+                <?php elseif ($alias == 'store.menu'): ?>
+                    <div class="section-item-content <?php /* @escapeNotVerified */ echo $groupCss ?>-item-content <?php echo 'push-left'; ?>" id="<?php /* @escapeNotVerified */ echo $alias; ?>" data-role="content"><?php /* @escapeNotVerified */ echo $html; ?><button class="back-link"><?php echo $backLink; ?></button></div>
+                <?php else: ?>
+                    <div class="section-item-content <?php /* @escapeNotVerified */ echo $groupCss ?>-item-content" id="<?php /* @escapeNotVerified */ echo $alias; ?>" data-role="content"><?php /* @escapeNotVerified */ echo $html; ?></div>
+                <?php endif; ?>
+            <?php endforeach;?>
+
+            <button class="close-link"><?php echo $closeLink; ?></button>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,371 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<div class="breadcrumbs">
+    <ul class="items">
+        <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+            <li class="item <?php /* @escapeNotVerified */ echo $crumbName ?>">
+            <?php if ($crumbInfo['link']) : ?>
+                <a href="<?php /* @escapeNotVerified */ echo $crumbInfo['link'] ?>" title="<?php echo $block->escapeHtml($crumbInfo['title']) ?>">
+                    <?php echo $block->escapeHtml($crumbInfo['label']) ?>
+                </a>
+            <?php elseif ($crumbInfo['last']) : ?>
+                <strong><?php echo $block->escapeHtml($crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?php echo $block->escapeHtml($crumbInfo['label']) ?>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php else: ?>
+    <div class="breadcrumbs"></div>
+    <script>
+        require([
+            'jquery',
+            'Magento_Theme/js/model/breadcrumb-list',
+            'breadcrumbs'
+        ], function ($, breadcrumbList) {
+            'use strict';
+
+            if ($('html[lang="de"]').length > 0) {
+                if ($('.checkout-cart-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'cart',
+                            'link': '/de/checkout/cart',
+                            'title': 'Warenkorb',
+                            'label': 'Warenkorb'
+                        }
+                    ];
+                } else if ($('.customer-account-create').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'register',
+                            'link': '/de/customer/account/create',
+                            'title': 'Registrierung',
+                            'label': 'Registrierung'
+                        }
+                    ];
+                } else if ($('.customer-account-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'account',
+                            'link': '/de/customer/account/index',
+                            'title': 'Mein Konto',
+                            'label': 'Mein Konto'
+                        }
+                    ];
+                } else if ($('.sales-order-history').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'sales',
+                            'link': '/de/sales/order/history',
+                            'title': 'Meine Bestellungen',
+                            'label': 'Meine Bestellungen'
+                        }
+                    ];
+                } else if ($('.wishlist-index-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'wishlist',
+                            'link': '/de/wunschliste',
+                            'title': 'Wunschliste',
+                            'label': 'Wunschliste'
+                        }
+                    ];
+                } else if ($('.customer-address-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'addressbuch',
+                            'link': '/de/customer/address/index',
+                            'title': 'Adressbuch',
+                            'label': 'Adressbuch'
+                        }
+                    ];
+                } else if ($('.customer-account-edit').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'kontoinformation',
+                            'link': '/de/customer/account/edit',
+                            'title': 'Kontoinformation',
+                            'label': 'Kontoinformation'
+                        }
+                    ];
+                } else if ($('.vault-cards-listaction').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'zahlungsarten',
+                            'link': '/de/vault/cards/listaction',
+                            'title': 'Zahlungsarten',
+                            'label': 'Zahlungsarten'
+                        }
+                    ];
+                } else if ($('.checkout-index-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'checkout',
+                            'link': '/de/checkout',
+                            'title': 'Zur Kasse',
+                            'label': 'Zur Kasse'
+                        }
+                    ];
+                } else if ($('.checkout-onepage-success').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        },
+                        {
+                            'name': 'checkout-success',
+                            'link': '/de/checkout/onepage/success/',
+                            'title': 'Bestellung abgeschlossen',
+                            'label': 'Bestellung abgeschlossen'
+                        }
+                    ];
+                } else {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/de/',
+                            'title': 'Zur Startseite',
+                            'label': 'Startseite'
+                        }
+                    ];
+                }                
+            } else {
+                if ($('.checkout-cart-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'cart',
+                            'link': '/en/checkout/cart',
+                            'title': 'Cart',
+                            'label': 'Cart'
+                        }
+                    ];
+                } else if ($('.customer-account-create').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'register',
+                            'link': '/en/customer/account/create',
+                            'title': 'Registration',
+                            'label': 'Registration'
+                        }
+                    ];
+                } else if ($('.customer-account-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'mayaccount',
+                            'link': '/en/customer/account/index',
+                            'title': 'My Account',
+                            'label': 'My Account'
+                        }
+                    ];
+                } else if ($('.sales-order-history').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'sales',
+                            'link': '/en/sales/order/history',
+                            'title': 'My Orders',
+                            'label': 'My Orders'
+                        }
+                    ];
+                } else if ($('.wishlist-index-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'wishlist',
+                            'link': '/en/wunschliste',
+                            'title': 'My Wish List',
+                            'label': 'My Wish List'
+                        }
+                    ];
+                } else if ($('.customer-address-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'address',
+                            'link': '/en/customer/address/index',
+                            'title': 'Address Book',
+                            'label': 'Address Book'
+                        }
+                    ];
+                } else if ($('.customer-account-edit').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'account-edit',
+                            'link': '/en/customer/account/edit',
+                            'title': 'Account Information',
+                            'label': 'Account Information'
+                        }
+                    ];
+                } else if ($('.vault-cards-listaction').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'account-edit',
+                            'link': '/en/vault/cards/listaction',
+                            'title': 'Payment Methods',
+                            'label': 'Payment Methods'
+                        }
+                    ];
+                } else if ($('.checkout-index-index').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'checkout',
+                            'link': '/en/checkout',
+                            'title': 'Checkout',
+                            'label': 'Checkout'
+                        }
+                    ];
+                } else if ($('.checkout-onepage-success').length > 0) {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        },
+                        {
+                            'name': 'checkout-success',
+                            'link': '/en/checkout/onepage/success/',
+                            'title': 'Order completed',
+                            'label': 'Order completed'
+                        }
+                    ];
+                } else {
+                    var breadcrumbs = [
+                        {
+                            'name': 'home',
+                            'link': '/en/',
+                            'title': 'To startpage',
+                            'label': 'Home'
+                        }
+                    ];   
+                }
+            }
+            
+
+            // adding breadcrumbs to the Breadcrumb List
+            breadcrumbs.forEach(function (breadcrumb) {
+                breadcrumbList.push(breadcrumb);
+            });
+
+            // Breadcrumbs widget initialization
+            $('.breadcrumbs').breadcrumbs();
+        });
+    </script>
+<?php endif; ?>

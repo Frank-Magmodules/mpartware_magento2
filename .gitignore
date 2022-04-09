@@ -3,3 +3,4 @@
 .vscode
 database
 /www/public/magento2/*
+!/www/public/magento2/app

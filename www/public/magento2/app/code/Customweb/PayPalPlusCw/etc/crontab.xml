@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="paypalpluscw_process_cron" instance="Customweb\PayPalPlusCw\Model\Cron\Processor" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+        <job name="paypalpluscw_transaction_cleanup_cron" instance="Customweb\PayPalPlusCw\Model\Cron\TransactionCleanup" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+        <job name="paypalpluscw_grid_transaction_async_insert" instance="CustomwebPayPalPlusCwIndexGridAsyncInsertCron" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

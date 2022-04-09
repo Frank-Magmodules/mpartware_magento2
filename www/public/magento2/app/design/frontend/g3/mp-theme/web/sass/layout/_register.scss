@@ -1,0 +1,37 @@
+.customer-account-create {
+  .form-create-account {
+    .field.choice {
+      display: none;
+    }
+  }
+
+  .fieldset .legend {
+    margin-left: 0;
+  }
+
+  .fieldset .field .label {
+    width: auto;
+    float: unset;
+  }
+
+  .fieldset .field .control {
+    width: 100%;
+    float: unset;
+  }
+
+  .field.customer-group.required label:first-child {
+    margin-right: 20px;
+  }
+
+  .field.region {
+    display: block!important;
+  }
+
+  .field.taxvat {
+    display: none;
+  }
+}
+
+@media(min-width: 768px) {
+
+}

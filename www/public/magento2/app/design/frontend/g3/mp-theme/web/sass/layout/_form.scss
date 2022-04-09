@@ -1,0 +1,53 @@
+.cms-versand-und-bezahlung, .cms-shipping-and-payment{
+    .tables-container{
+        display: flex;
+        flex-wrap:wrap;
+        margin: 0 -10px;
+
+        .table-wrapper{
+            flex-basis: calc(100% / 3);
+            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            >div{
+                padding: 10px;
+
+                h4{
+                    margin-bottom: 0.5em;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px){
+    .cms-versand-und-bezahlung, .cms-shipping-and-payment{
+        .tables-container .table-wrapper{
+            flex-basis: 50%;
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .cms-versand-und-bezahlung, .cms-shipping-and-payment{
+        .tables-container .table-wrapper{
+            flex-basis: 100%;
+        }
+    }
+}
+
+.filter-options input[type=checkbox]+.amshopby-choice {
+    visibility: hidden;
+}
+
+.contact-index-index .legend, 
+.contact-index-index .field.no-label {
+    margin-left: 0;
+    max-width: 600px;
+
+    &::before {
+        content: none;
+    }
+}
