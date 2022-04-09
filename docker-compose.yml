@@ -1,0 +1,131 @@
+version: '3.9'
+services:
+  traefik:
+    image: traefik:v2.5
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    restart: always
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.file.directory=/config/"
+      - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--log.level=DEBUG"
+      - "--accessLog"
+      - "--providers.docker.network=devops"
+    networks:
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.dev.test`)"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.tls=true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config/:/config/
+
+  portainer:
+    image: portainer/portainer:latest
+    depends_on:
+      - database
+      - traefik
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.dev.test`)"
+      - "traefik.http.routers.portainer.entrypoints=web"
+      - "traefik.http.routers.portainer-secure.rule=Host(`portainer.dev.test`)"
+      - "traefik.http.routers.portainer-secure.entrypoints=websecure"
+      - "traefik.http.routers.portainer-secure.tls=true"
+
+  adminer:
+    image: adminer:latest
+    volumes:
+      - ./config/adminer/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+    restart: always
+    depends_on:
+      - database
+      - traefik
+    links:
+      - database
+    environment:
+      ADMINER_DEFAULT_SERVER: database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      ADMINER_DESIGN: rmsoft_blue
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adminer.rule=Host(`adminer.dev.test`)"
+      - "traefik.http.routers.adminer.entrypoints=web"
+      - "traefik.http.routers.adminer-secure.rule=Host(`adminer.dev.test`)"
+      - "traefik.http.routers.adminer-secure.entrypoints=websecure"
+      - "traefik.http.routers.adminer-secure.tls=true"
+
+  mpshop:
+    image: webdevops/php-nginx:7.4
+    container_name: mpshop
+    depends_on:
+      - database
+      - traefik
+    volumes:
+      - ./www/public/magento2:/app:rw,cached
+    links:
+      - database
+    restart: always
+    environment:
+      - WEB_ALIAS_DOMAIN=mp-artware.dev.test
+      - WEB_DOCUMENT_ROOT=/app/pub
+      - SERVICE_NGINX_CLIENT_MAX_BODY_SIZE=250m
+      - php.memory_limit=2G
+      - php.realpath_cache_size=10M
+      - php.realpath_cache_ttl=7200
+      - MAX_INPUT_TIME=0
+      - PHP_DATE_TIMEZONE=Europe/Berlin
+      - PHP_DISPLAY_ERRORS=1
+      - PHP_MAX_EXECUTION_TIME=-1
+      - PHP_MAX_INPUT_TIME=-1
+      - PHP_POST_MAX_SIZE=500M
+      - PHP_UPLOAD_MAX_FILESIZE=500M
+      - PHP_OPCACHE_MEMORY_CONSUMPTION=128
+      - PHP_OPCACHE_MAX_ACCELERATED_FILES=100000
+      - PHP_MEMORY_LIMIT=5G
+      - php.realpath_cache_size=5G
+      - php.realpath_cache_ttl=5000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mpshop.rule=Host(`mp-artware.dev.test`)"
+      - "traefik.http.routers.mpshop.entrypoints=web"
+      - "traefik.http.routers.mpshop-secure.rule=Host(`mp-artware.dev.test`)"
+      - "traefik.http.routers.mpshop-secure.entrypoints=websecure"
+      - "traefik.http.routers.mpshop-secure.tls=true"
+
+  database:
+    image: mariadb
+    container_name: database
+    volumes:
+      - ./database/:/var/lib/mysql
+    ports:
+      - '3308:3306'
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=maindb
+
+volumes:
+  portainer_data:
+networks:
+  default:
+    name: devops
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450

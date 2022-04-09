@@ -1,0 +1,5 @@
+.DS_Store
+.idea
+.vscode
+database
+/www/public/magento2/*
